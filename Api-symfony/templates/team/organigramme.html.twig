@@ -33,20 +33,20 @@
 				
 				{{user.firstname }} {{ user.lastname }}
 
-					{% if user.sup_hierarchique =='Paul Stone' %}
+					{# {% if user.supHierarchique =='Paul Stone' %}
 				 		<h2>
 								<li>{{ user.firstname}}&nbsp;{{ user.lastname}}&nbsp;
 						</h2>
-						 {% elseif user.sup_hierarchique =="Paul Martin" %}
+						 {% elseif user.supHierarchique =="Paul Martin" %}
 						<h3>
 							<li>{{user.firstname}} &nbsp;{{user.lastname}}</li>
 						</h3>
-						{% elseif user.sup_hierarchique =="Justine Dupont" %}
+						{% elseif user.supHierarchique =="Justine Dupont" %}
 						<h4>
 							<li>{{user.firstname}} &nbsp;{{user.lastname}}</li>
 						</h4>
 
-					{% endif %}
+					{% endif %} #}
 				 
 					{% endfor %}
 		

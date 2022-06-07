@@ -131,6 +131,6 @@ class __TwigTemplate_c6a23be4f768018f6c324e463d673a76025b8a7eb8fbe98b7e36e19bd21
 
 </div>
 {% endblock %}
-", "default/index.html.twig", "C:\\laragon\\www\\tp-Symfony\\Api-symfony\\templates\\default\\index.html.twig");
+", "default/index.html.twig", "C:\\laragon\\www\\tp-symfony2\\Api-symfony\\templates\\default\\index.html.twig");
     }
 }
