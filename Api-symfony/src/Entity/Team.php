@@ -39,7 +39,7 @@ class Team
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Sup_hierarchique;
+    private $sup_hierarchique;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -134,12 +134,12 @@ class Team
 
     public function getSupHierarchique(): ?string
     {
-        return $this->Sup_hierarchique;
+        return $this->sup_hierarchique;
     }
 
     public function setSupHierarchique(string $Sup_hierarchique): self
     {
-        $this->Sup_hierarchique = $Sup_hierarchique;
+        $this->sup_hierarchique = $Sup_hierarchique;
 
         return $this;
     }

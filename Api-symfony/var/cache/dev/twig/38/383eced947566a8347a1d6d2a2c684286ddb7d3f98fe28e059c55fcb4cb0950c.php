@@ -385,6 +385,6 @@ class __TwigTemplate_98c1700c29a467f311872c754b38398dc524bda360becc250a9ca1e6786
 
 </body>
 </html>
-", "@ApiPlatform/SwaggerUi/index.html.twig", "C:\\laragon\\www\\tp-Symfony\\Api-symfony\\vendor\\api-platform\\core\\src\\Bridge\\Symfony\\Bundle\\Resources\\views\\SwaggerUi\\index.html.twig");
+", "@ApiPlatform/SwaggerUi/index.html.twig", "C:\\laragon\\www\\tp-symfony2\\Api-symfony\\vendor\\api-platform\\core\\src\\Bridge\\Symfony\\Bundle\\Resources\\views\\SwaggerUi\\index.html.twig");
     }
 }
