@@ -165,6 +165,6 @@ class __TwigTemplate_b581a432ce707550dd5ea8beb43d7762183426e3dab170fe3d10461f978
         {%- endfor -%}
     </pre>
 {% endif %}
-", "@Doctrine/Collector/explain.html.twig", "C:\\laragon\\www\\tp-Symfony\\Api-symfony\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\explain.html.twig");
+", "@Doctrine/Collector/explain.html.twig", "C:\\laragon\\www\\tp-symfony2\\Api-symfony\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\explain.html.twig");
     }
 }

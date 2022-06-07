@@ -29,22 +29,21 @@
 		<h1>Organigramme de l'équipe</h1>
 		<p>
 			{% for user in message  %}
-{% if user.supHierarchique == 'Paul Stone'%} 
-					{{user.supHierarchique}}
+				{% if user.firstname == 'Paul'%} 
+					{{user.firstname}}
 					
 						<p>Le supérieur est Paul Stone</p>
-							 {{	 user.firstname }}
+							 {{	 user.lastname }}
 							&nbsp;
-							{{ user.lastname}}
-							&nbsp; 
+							
 					<br>
-					 {% elseif user.supHierarchique =='Paul Martin' %} 
-						{{user.supHierarchique}}
+					 {% elseif user.firstname =='' %} 
+						{{user.lastname}}
 					
 						<p>Le supérieur est Paul Martin</p>		<br>
 
 						 {% else %} 
-							 {{user.supHierarchique}} 
+							 {{user.lastname}} 
 					
 						<p>Le supérieur est Justine Dupont</p>		<br> 
 				{% endif %}  
