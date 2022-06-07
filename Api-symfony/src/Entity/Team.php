@@ -137,9 +137,9 @@ class Team
         return $this->supHierarchique;
     }
 
-    public function setSupHierarchique(string $SupHierarchique): self
+    public function setSupHierarchique(string $supHierarchique): self
     {
-        $this->supHierarchique = $SupHierarchique;
+        $this->supHierarchique = $supHierarchique;
 
         return $this;
     }

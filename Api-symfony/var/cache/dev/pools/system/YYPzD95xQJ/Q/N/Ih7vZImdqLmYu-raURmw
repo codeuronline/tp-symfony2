@@ -1,4 +1,4 @@
-<?php //App%255CEntity%255CTeam%2524Sup_hierarchique
+<?php //App%255CEntity%255CTeam%2524supHierarchique
 
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
