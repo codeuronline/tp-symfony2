@@ -34,9 +34,14 @@ class TeamController extends AbstractController
     public function organigramme()
     {
 
-        $users = $this->getDoctrine()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
-        $positions = $this->getDoctrine()->getRepository(Position::class)->findAll();
-    //$liaison =$this->getDoctrine()->getRepository(Position_Team::class)->findAll();        
+        $doctrine = $this->get('doctrine');
+        $users = $doctrine->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
+        $positions = $doctrine->getRepository(Position::class)->findAll();
+        for($i=0 ;$i<count($positions);$i++) {
+         echo $positions[$i]->getUsers();
+        
+        }
+        //$liaison =$this->getDoctrine()->getRepository(Position_Team::class)->findAll();        
         // $user['findOneBy'] = $repository->findOneBy(['nom' => 'Albert']); // Rechercher un seul produit par son nom
 
 
@@ -49,12 +54,13 @@ class TeamController extends AbstractController
         $allUser = [];
 
         foreach ($users as $element) {
+            //
             $aUser['id'] = $element->getId();
             $aUser['firstname'] = $element->getFirstname();
             $aUser['lastname'] = $element->getLastname();
             $aUser['supHierarchique'] = $element->getSupHierarchique();
             $aUser['photo'] = $element->getPhoto();
-            $aUser['position']=$element->getPositions()->getId();
+            $aUser['position']=$element->getPositions();
             //$aUser['label']=$element->$positions;
             //var_dump($element->getPositions()->find(1));
             // foreach ($positions as $label) {
@@ -62,7 +68,7 @@ class TeamController extends AbstractController
             //         $aUser['label'] = $label->getLabel();
             //     } else {$aUser['label'] = "Dev";}
             // }
-            var_dump($aUser);
+            //var_dump($aUser);
             $filterUser[] = $aUser;
             var_dump($filterUser);
             $indice++;
