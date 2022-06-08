@@ -40,16 +40,35 @@ class TeamController extends AbstractController
         $positions = $doctrine->getRepository(Position::class)->findAll();
         //
         $indice=0;
+        // $full=[];
+        // foreach ( $users as $elementUser) {
+        //     $afull=[];
+        //     foreach($positions as $elementPosition){
+        //         if($elementPosition->getId()==$elementUser->getId()){
+        //             $afull['id']=$elementUser->getId();
+        //             $afull['position']=$elementUser->getPositions();
+        //             $afull['user']=$elementPosition->getUsers();
+        //             $afull['firstname']=$elementUser->getFirstname();
+        //             $afull['lastname']=$elementUser->getLastname();
+        //             $afull['label']=$elementPosition->getLabel();
+        //             $full[]=$afull;
+        //         }
+        //         }
+            
+        
+                
+        //  }
         $full=[];
-        foreach ( $users as $elementUser) {
+        $elementUser=$users;
+        foreach($positions as $elementPosition) {
             $afull=[];
-            foreach($positions as $elementPosition){
-                if($elementPosition->getId()==$elementUser->getId()){
-                    $afull['id']=$elementUser->getId();
-                    $afull['position']=$elementUser->getPositions();
+             for($i= 0;$i<count($elementUser) ;$i++){
+                if($elementPosition->getId()==$i){
+                    $afull['id']=$elementUser[$i]->getId();
+                    //$afull['position']=$elementUser->getPositions();
                     $afull['user']=$elementPosition->getUsers();
-                    $afull['firstname']=$elementUser->getFirstname();
-                    $afull['lastname']=$elementUser->getLastname();
+                    $afull['firstname']=$elementUser[$i]->getFirstname();
+                    $afull['lastname']=$elementUser[$i]->getLastname();
                     $afull['label']=$elementPosition->getLabel();
                     $full[]=$afull;
                 }
