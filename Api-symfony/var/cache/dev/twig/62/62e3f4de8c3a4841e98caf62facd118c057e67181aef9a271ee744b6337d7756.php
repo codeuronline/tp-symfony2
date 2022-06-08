@@ -100,7 +100,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
             // line 33
             echo "\t\t\t\t";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["user"], "positions", [], "any", false, false, false, 33), "label", [], "any", false, false, false, 33), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["user"], "position", [], "any", false, false, false, 33), "label", [], "any", false, false, false, 33), "html", null, true);
             echo "
 \t\t\t";
         }
@@ -168,7 +168,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t\t<p>
 \t\t{% set index =0 %}
 \t\t\t{% for user in filterUsers  %}
-\t\t\t\t{{user.positions.label}}
+\t\t\t\t{{user.position.label}}
 \t\t\t{% endfor %}
 
 

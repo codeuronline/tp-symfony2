@@ -54,6 +54,7 @@ class TeamController extends AbstractController
             $aUser['lastname'] = $element->getLastname();
             $aUser['supHierarchique'] = $element->getSupHierarchique();
             $aUser['photo'] = $element->getPhoto();
+            $aUser['position']=$element->getPositions();
             //$aUser['label']=$element->$positions;
             //var_dump($element->getPositions()->find(1));
             // foreach ($positions as $label) {
