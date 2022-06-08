@@ -90,60 +90,24 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
         // line 29
         echo "\t\t<h1>Organigramme de l'équipe</h1>
 \t\t<p>
-\t\t\t";
+\t\t";
         // line 31
+        $context["index"] = 0;
+        // line 32
+        echo "\t\t\t";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["message"]) || array_key_exists("message", $context) ? $context["message"] : (function () { throw new RuntimeError('Variable "message" does not exist.', 31, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["filterUsers"]) || array_key_exists("filterUsers", $context) ? $context["filterUsers"] : (function () { throw new RuntimeError('Variable "filterUsers" does not exist.', 32, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-            // line 32
+            // line 33
             echo "\t\t\t\t";
-            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 32), "Paul"))) {
-                echo " 
-\t\t\t\t\t";
-                // line 33
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 33), "html", null, true);
-                echo "
-\t\t\t\t\t
-\t\t\t\t\t\t<p>Le supérieur est Paul Stone</p>
-\t\t\t\t\t\t\t ";
-                // line 36
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 36), "html", null, true);
-                echo "
-\t\t\t\t\t\t\t&nbsp;
-\t\t\t\t\t\t\t
-\t\t\t\t\t<br>
-\t\t\t\t\t ";
-            } elseif ((0 === twig_compare(twig_get_attribute($this->env, $this->source,             // line 40
-$context["user"], "firstname", [], "any", false, false, false, 40), ""))) {
-                echo " 
-\t\t\t\t\t\t";
-                // line 41
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 41), "html", null, true);
-                echo "
-\t\t\t\t\t
-\t\t\t\t\t\t<p>Le supérieur est Paul Martin</p>\t\t<br>
-
-\t\t\t\t\t\t ";
-            } else {
-                // line 45
-                echo " 
-\t\t\t\t\t\t\t ";
-                // line 46
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 46), "html", null, true);
-                echo " 
-\t\t\t\t\t
-\t\t\t\t\t\t<p>Le supérieur est Justine Dupont</p>\t\t<br> 
-\t\t\t\t";
-            }
-            // line 49
-            echo "  
-
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["user"], "positions", [], "any", false, false, false, 33), "label", [], "any", false, false, false, 33), "html", null, true);
+            echo "
 \t\t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 52
+        // line 35
         echo "
 
 \t\t</p>
@@ -167,7 +131,7 @@ $context["user"], "firstname", [], "any", false, false, false, 40), ""))) {
 
     public function getDebugInfo()
     {
-        return array (  147 => 52,  139 => 49,  132 => 46,  129 => 45,  121 => 41,  117 => 40,  110 => 36,  104 => 33,  99 => 32,  95 => 31,  91 => 29,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
+        return array (  111 => 35,  102 => 33,  97 => 32,  95 => 31,  91 => 29,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -202,26 +166,9 @@ $context["user"], "firstname", [], "any", false, false, false, 40), ""))) {
 \t\t\t\t\t\t\t\t    </ul> #}
 \t\t<h1>Organigramme de l'équipe</h1>
 \t\t<p>
-\t\t\t{% for user in message  %}
-\t\t\t\t{% if user.firstname == 'Paul'%} 
-\t\t\t\t\t{{user.firstname}}
-\t\t\t\t\t
-\t\t\t\t\t\t<p>Le supérieur est Paul Stone</p>
-\t\t\t\t\t\t\t {{\t user.lastname }}
-\t\t\t\t\t\t\t&nbsp;
-\t\t\t\t\t\t\t
-\t\t\t\t\t<br>
-\t\t\t\t\t {% elseif user.firstname =='' %} 
-\t\t\t\t\t\t{{user.lastname}}
-\t\t\t\t\t
-\t\t\t\t\t\t<p>Le supérieur est Paul Martin</p>\t\t<br>
-
-\t\t\t\t\t\t {% else %} 
-\t\t\t\t\t\t\t {{user.lastname}} 
-\t\t\t\t\t
-\t\t\t\t\t\t<p>Le supérieur est Justine Dupont</p>\t\t<br> 
-\t\t\t\t{% endif %}  
-
+\t\t{% set index =0 %}
+\t\t\t{% for user in filterUsers  %}
+\t\t\t\t{{user.positions.label}}
 \t\t\t{% endfor %}
 
 

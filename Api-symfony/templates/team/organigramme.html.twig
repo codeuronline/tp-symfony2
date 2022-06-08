@@ -28,26 +28,9 @@
 								    </ul> #}
 		<h1>Organigramme de l'équipe</h1>
 		<p>
-			{% for user in message  %}
-				{% if user.firstname == 'Paul'%} 
-					{{user.firstname}}
-					
-						<p>Le supérieur est Paul Stone</p>
-							 {{	 user.lastname }}
-							&nbsp;
-							
-					<br>
-					 {% elseif user.firstname =='' %} 
-						{{user.lastname}}
-					
-						<p>Le supérieur est Paul Martin</p>		<br>
-
-						 {% else %} 
-							 {{user.lastname}} 
-					
-						<p>Le supérieur est Justine Dupont</p>		<br> 
-				{% endif %}  
-
+		{% set index =0 %}
+			{% for user in filterUsers  %}
+				{{user.positions.label}}
 			{% endfor %}
 
 
