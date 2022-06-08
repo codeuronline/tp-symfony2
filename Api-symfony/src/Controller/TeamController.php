@@ -31,17 +31,34 @@ class TeamController extends AbstractController
     /**
      * @Route("/team/organigramme", name="app_team_organigramme")
      */
+    
     public function organigramme()
     {
 
         $doctrine = $this->get('doctrine');
         $users = $doctrine->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
         $positions = $doctrine->getRepository(Position::class)->findAll();
-        for($i=0 ;$i<count($positions);$i++) {
-         echo $positions[$i]->getUsers();
+        //
+        $indice=0;
+        $full=[];
+        foreach ( $users as $elementUser) {
+            $afull=[];
+            foreach($positions as $elementPosition){
+                if($elementPosition->getId()==$elementUser->getId()){
+                    $afull['id']=$elementUser->getId();
+                    $afull['position']=$elementUser->getPositions();
+                    $afull['user']=$elementPosition->getUsers();
+                    $afull['firstname']=$elementUser->getFirstname();
+                    $afull['lastname']=$elementUser->getLastname();
+                    $afull['label']=$elementPosition->getLabel();
+                    $full[]=$afull;
+                }
+                }
+            
         
-        }
-        //$liaison =$this->getDoctrine()->getRepository(Position_Team::class)->findAll();        
+                
+         }
+         var_dump(count($full));
         // $user['findOneBy'] = $repository->findOneBy(['nom' => 'Albert']); // Rechercher un seul produit par son nom
 
 
@@ -53,34 +70,36 @@ class TeamController extends AbstractController
         $indice = 0;
         $allUser = [];
 
-        foreach ($users as $element) {
-            //
-            $aUser['id'] = $element->getId();
-            $aUser['firstname'] = $element->getFirstname();
-            $aUser['lastname'] = $element->getLastname();
-            $aUser['supHierarchique'] = $element->getSupHierarchique();
-            $aUser['photo'] = $element->getPhoto();
-            $aUser['position']=$element->getPositions();
-            //$aUser['label']=$element->$positions;
-            //var_dump($element->getPositions()->find(1));
-            // foreach ($positions as $label) {
-            //     if ($indice == $label->getId()) {
-            //         $aUser['label'] = $label->getLabel();
-            //     } else {$aUser['label'] = "Dev";}
-            // }
-            //var_dump($aUser);
-            $filterUser[] = $aUser;
-            var_dump($filterUser);
-            $indice++;
-        }
+        // foreach ($users as $element) {
+        // //     //
+        // //     $aUser['id'] = $element->getId();
+        //      $aUser['firstname'] = $element->getFirstname();
+        //      $aUser['lastname'] = $element->getLastname();
+        //      $aUser['supHierarchique'] = $element->getSupHierarchique();
+        //      $aUser['photo'] = $element->getPhoto();
+        //      $aUser['position']=$element->getPositions();
+        //      //$aUser['label']=$element->$positions;
+        // //     //var_dump($element->getPositions()->find(1));
+        //     foreach ($positions as $label) {
+        //          if ($indice == $label->getUser()) {
+        //              $aUser['label'] = $label->getLabel();
+        //          } else {$aUser['label'] = "Dev";}
+        //      }
+        //     //var_dump($aUser);
+        //      $filterUser[] = $allUser;
+        // //     //var_dump($filterUser);
+        //      $indice++;
+        //  }
         
         //error_log(print_r($message,1));
         
         //var_dump($users);
+        $filterUser=[];
+        
             return $this->render('team/organigramme.html.twig', [
             'users'=>$users,
             "position"=>$positions,
-            "filterUsers"=>$filterUser
+            "filterUsers"=>$full
         ]); 
         //Envoie la vue sur la page twig
 
