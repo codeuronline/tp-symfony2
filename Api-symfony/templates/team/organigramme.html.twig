@@ -30,7 +30,7 @@
 		<p>
 		{% set index =0 %}
 			{% for user in filterUsers  %}
-				{{user.firstname}} {{user.lastname}}({{user.label}})<br>
+				{{user.id}}{{user.firstname}} {{user.lastname}}({{user.label}})<br>
 			{% endfor %}
 
 

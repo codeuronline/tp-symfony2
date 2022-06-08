@@ -59,10 +59,11 @@ class TeamController extends AbstractController
                 
         //  }
         $full=[];
-        $elementUser=$users;
+        $elementUser=$users;echo count($elementUser);
         foreach($positions as $elementPosition) {
             $afull=[];
-             for($i= 0;$i<count($elementUser) ;$i++){
+            echo count($positions);
+             for($i= 1;$i<count($elementUser)+1 ;$i++){
                 if($elementPosition->getId()==$i){
                     $afull['id']=$elementUser[$i]->getId();
                     //$afull['position']=$elementUser->getPositions();

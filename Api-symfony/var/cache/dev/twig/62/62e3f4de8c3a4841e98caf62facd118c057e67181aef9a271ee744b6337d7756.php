@@ -100,6 +100,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
             // line 33
             echo "\t\t\t\t";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 33), "html", null, true);
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 33), "html", null, true);
             echo " ";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 33), "html", null, true);
@@ -135,7 +136,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 
     public function getDebugInfo()
     {
-        return array (  115 => 35,  102 => 33,  97 => 32,  95 => 31,  91 => 29,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
+        return array (  116 => 35,  102 => 33,  97 => 32,  95 => 31,  91 => 29,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -172,7 +173,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t\t<p>
 \t\t{% set index =0 %}
 \t\t\t{% for user in filterUsers  %}
-\t\t\t\t{{user.firstname}} {{user.lastname}}({{user.label}})<br>
+\t\t\t\t{{user.id}}{{user.firstname}} {{user.lastname}}({{user.label}})<br>
 \t\t\t{% endfor %}
 
 
