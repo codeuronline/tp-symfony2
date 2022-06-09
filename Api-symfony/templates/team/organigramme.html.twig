@@ -19,18 +19,23 @@
 
 	<div
 		class="example-wrapper">
-		{# <h1>Hello {{ controller_name }}! ✅</h1>
-								
-								    This friendly message is coming from:
-								    <ul>
-								        <li>Your controller at <code><a href="{{ 'C:/laragon/www/tp-Symfony/Api-symfony/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-								        <li>Your template at <code><a href="{{ 'C:/laragon/www/tp-Symfony/Api-symfony/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
-								    </ul> #}
 		<h1>Organigramme de l'équipe</h1>
 		<p>
 		{% set index =0 %}
 			{% for user in filterUsers  %}
-				{{user.id}}{{user.firstname}} {{user.lastname}}({{user.label}})<br>
+				
+				{% if user.supHierarchique is empty %}
+					{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
+				{% elseif user.supHierarchique == "Paul Stone" %}
+				&nbsp;&nbsp;{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
+				{% elseif  user.supHierarchique == "Paul Martin" %}
+					&nbsp;&nbsp;&nbsp;&nbsp;{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
+				{% elseif user.supHierarchique == "Justine Dupond" %}
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>							
+				{% else %}
+					-------<br>
+				{% endif %}
+				
 			{% endfor %}
 
 

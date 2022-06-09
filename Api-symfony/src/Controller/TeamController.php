@@ -59,57 +59,74 @@ class TeamController extends AbstractController
                 
         //  }
         $full=[];
-        $elementUser=$users;echo count($elementUser);
-        foreach($positions as $elementPosition) {
-            $afull=[];
-            echo count($positions);
-             for($i= 1;$i<count($elementUser)+1 ;$i++){
-                if($elementPosition->getId()==$i){
-                    $afull['id']=$elementUser[$i]->getId();
-                    //$afull['position']=$elementUser->getPositions();
-                    $afull['user']=$elementPosition->getUsers();
-                    $afull['firstname']=$elementUser[$i]->getFirstname();
-                    $afull['lastname']=$elementUser[$i]->getLastname();
-                    $afull['label']=$elementPosition->getLabel();
-                    $full[]=$afull;
-                }
-                }
-            
         
-                
-         }
-         var_dump(count($full));
-        // $user['findOneBy'] = $repository->findOneBy(['nom' => 'Albert']); // Rechercher un seul produit par son nom
-
-
-        // $user['find'] = $repository->find(1);
-
-        // $user['findBy'] =  $repository->findBy( ['nom' => 'Iguane'],
-        // ['age' => 'ASC'],6,0);
-
-        $indice = 0;
-        $allUser = [];
-
-        // foreach ($users as $element) {
-        // //     //
-        // //     $aUser['id'] = $element->getId();
-        //      $aUser['firstname'] = $element->getFirstname();
-        //      $aUser['lastname'] = $element->getLastname();
-        //      $aUser['supHierarchique'] = $element->getSupHierarchique();
-        //      $aUser['photo'] = $element->getPhoto();
-        //      $aUser['position']=$element->getPositions();
-        //      //$aUser['label']=$element->$positions;
-        // //     //var_dump($element->getPositions()->find(1));
-        //     foreach ($positions as $label) {
-        //          if ($indice == $label->getUser()) {
-        //              $aUser['label'] = $label->getLabel();
-        //          } else {$aUser['label'] = "Dev";}
-        //      }
-        //     //var_dump($aUser);
-        //      $filterUser[] = $allUser;
-        // //     //var_dump($filterUser);
-        //      $indice++;
+         foreach($users as $elementUser){           
+            $afull=[];
+            $afull['id']=$elementUser->getId();
+            $afull['position']=$elementUser->getPositions();
+            $afull['firstname']=$elementUser->getFirstname();
+            $afull['lastname']=$elementUser->getLastname();
+            $afull['supHierarchique']=$elementUser->getSupHierarchique();
+            foreach ( $afull['position'] as $aLabel) {
+                if ($afull['id']=$aLabel->getId()){
+                $afull['label']=$aLabel->getLabel();                
+            }
+            $full[]=$afull;}
+        
+        }
+           // echo count($users);
+        //    echo $elementUser->getFirstname()."<br>"; 
+        //     // echo $elementUser->getFirstname();        
+        //     foreach($positions as $elementPosition) {
+        //         echo"user n°: ". $elementUser->getId()."==".$i."<br>";      
+        //         if(($elementUser->getId()==$i)){
+        //             echo "position: ".$i."<br>";
+                   
+        //             //$afull['position']=$elementUser->getPositions();
+        //      $afull['user']=$elementPosition->getUsers();
+        //             $afull['firstname']=$elementUser->getFirstname();
+        //             $afull['lastname']=$elementUser->getLastname();
+        //             $afull['label']=$elementPosition->getLabel();
+        //             $full[]=$afull;
+        //         //
+        //         }
+              
+        //     $i++;    
         //  }
+        
+        // }
+        //  var_dump(count($full));
+        // // $user['findOneBy'] = $repository->findOneBy(['nom' => 'Albert']); // Rechercher un seul produit par son nom
+
+
+        // // $user['find'] = $repository->find(1);
+
+        // // $user['findBy'] =  $repository->findBy( ['nom' => 'Iguane'],
+        // // ['age' => 'ASC'],6,0);
+
+        // $indice = 0;
+        // $allUser = [];
+
+        // // foreach ($users as $element) {
+        // // //     //
+        // // //     $aUser['id'] = $element->getId();
+        // //      $aUser['firstname'] = $element->getFirstname();
+        // //      $aUser['lastname'] = $element->getLastname();
+        // //      $aUser['supHierarchique'] = $element->getSupHierarchique();
+        // //      $aUser['photo'] = $element->getPhoto();
+        // //      $aUser['position']=$element->getPositions();
+        // //      //$aUser['label']=$element->$positions;
+        // // //     //var_dump($element->getPositions()->find(1));
+        // //     foreach ($positions as $label) {
+        // //          if ($indice == $label->getUser()) {
+        // //              $aUser['label'] = $label->getLabel();
+        // //          } else {$aUser['label'] = "Dev";}
+        // //      }
+        // //     //var_dump($aUser);
+        // //      $filterUser[] = $allUser;
+        // // //     //var_dump($filterUser);
+        // //      $indice++;
+        // //  }
         
         //error_log(print_r($message,1));
         
