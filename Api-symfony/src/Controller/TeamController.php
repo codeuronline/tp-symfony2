@@ -66,15 +66,25 @@ class TeamController extends AbstractController
             $afull['position']=$elementUser->getPositions();
             $afull['firstname']=$elementUser->getFirstname();
             $afull['lastname']=$elementUser->getLastname();
+            $afull['photo']=$elementUser->getPhoto();
             $afull['supHierarchique']=$elementUser->getSupHierarchique();
             foreach ( $afull['position'] as $aLabel) {
+                $afull['label']=[];
+                if (count($afull['position']) > 1 ) {
+                    foreach ($aLabel as $multiLabel) {
+                        $afull['id']=$multiLabel->getId();
+                        $afull['label'].=$multiLabel->getLabel();
+                    }
+                } else {
                 if ($afull['id']=$aLabel->getId()){
-                $afull['label']=$aLabel->getLabel();                
+                    $afull['label']=$aLabel->getLabel();                
             }
+        }
             $full[]=$afull;}
         
         }
-         foreach ($full as $keys => $value) {
+        //solution de tri via array_multisort
+        foreach ($full as $keys => $value) {
          $marks[$keys]=$value["supHierarchique"];
          
          }
