@@ -99,9 +99,9 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
             // line 26
             if (twig_test_empty(twig_get_attribute($this->env, $this->source, $context["user"], "supHierarchique", [], "any", false, false, false, 26))) {
                 // line 27
-                echo "\t\t\t\t\t";
+                echo "\t\t\t\t\t(ID Position:";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 27), "html", null, true);
-                echo " ";
+                echo ") ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 27), "html", null, true);
                 echo " ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 27), "html", null, true);
@@ -114,9 +114,9 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
             } elseif ((0 === twig_compare(twig_get_attribute($this->env, $this->source,             // line 28
 $context["user"], "supHierarchique", [], "any", false, false, false, 28), "Paul Stone"))) {
                 // line 29
-                echo "\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;";
+                echo "\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 29), "html", null, true);
-                echo " ";
+                echo ") ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 29), "html", null, true);
                 echo " ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 29), "html", null, true);
@@ -129,9 +129,9 @@ $context["user"], "supHierarchique", [], "any", false, false, false, 28), "Paul 
             } elseif ((0 === twig_compare(twig_get_attribute($this->env, $this->source,             // line 30
 $context["user"], "supHierarchique", [], "any", false, false, false, 30), "Paul Martin"))) {
                 // line 31
-                echo "\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                echo "\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 31), "html", null, true);
-                echo " ";
+                echo ") ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 31), "html", null, true);
                 echo " ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 31), "html", null, true);
@@ -144,9 +144,9 @@ $context["user"], "supHierarchique", [], "any", false, false, false, 30), "Paul 
             } elseif ((0 === twig_compare(twig_get_attribute($this->env, $this->source,             // line 32
 $context["user"], "supHierarchique", [], "any", false, false, false, 32), "Justine Dupond"))) {
                 // line 33
-                echo "\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                echo "\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 33), "html", null, true);
-                echo " ";
+                echo ") ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 33), "html", null, true);
                 echo " ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 33), "html", null, true);
@@ -158,9 +158,9 @@ $context["user"], "supHierarchique", [], "any", false, false, false, 32), "Justi
 \t\t\t\t";
             } else {
                 // line 35
-                echo "\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                echo "\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 35), "html", null, true);
-                echo " ";
+                echo ") ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 35), "html", null, true);
                 echo " ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 35), "html", null, true);
@@ -233,15 +233,15 @@ $context["user"], "supHierarchique", [], "any", false, false, false, 32), "Justi
 \t\t\t{% for user in filterUsers  %}
 \t\t\t\t
 \t\t\t\t{% if user.supHierarchique is empty %}
-\t\t\t\t\t{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
+\t\t\t\t\t(ID Position:{{user.id}}) {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
 \t\t\t\t{% elseif user.supHierarchique == \"Paul Stone\" %}
-\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
+\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:{{user.id}}) {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
 \t\t\t\t{% elseif  user.supHierarchique == \"Paul Martin\" %}
-\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
+\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:{{user.id}}) {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
 \t\t\t\t{% elseif user.supHierarchique == \"Justine Dupond\" %}
-\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>\t\t\t\t\t\t\t
+\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:{{user.id}}) {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>\t\t\t\t\t\t\t
 \t\t\t\t{% else %}
-\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
+\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:{{user.id}}) {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
 \t\t\t\t{% endif %}
 \t\t\t\t
 \t\t\t{% endfor %}

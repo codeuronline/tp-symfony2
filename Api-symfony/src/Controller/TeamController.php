@@ -38,26 +38,9 @@ class TeamController extends AbstractController
         $doctrine = $this->get('doctrine');
         $users = $doctrine->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
         $positions = $doctrine->getRepository(Position::class)->findAll();
-        //
-        $indice=0;
-        // $full=[];
-        // foreach ( $users as $elementUser) {
-        //     $afull=[];
-        //     foreach($positions as $elementPosition){
-        //         if($elementPosition->getId()==$elementUser->getId()){
-        //             $afull['id']=$elementUser->getId();
-        //             $afull['position']=$elementUser->getPositions();
-        //             $afull['user']=$elementPosition->getUsers();
-        //             $afull['firstname']=$elementUser->getFirstname();
-        //             $afull['lastname']=$elementUser->getLastname();
-        //             $afull['label']=$elementPosition->getLabel();
-        //             $full[]=$afull;
-        //         }
-        //         }
-            
         
-                
-        //  }
+        
+        
         $full=[];
         
          foreach($users as $elementUser){           
@@ -83,6 +66,8 @@ class TeamController extends AbstractController
             $full[]=$afull;}
         
         }
+        // nouveau tableau de tri
+        
         //solution de tri via array_multisort
         foreach ($full as $keys => $value) {
          $marks[$keys]=$value["supHierarchique"];
