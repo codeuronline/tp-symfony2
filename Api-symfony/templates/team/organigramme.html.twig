@@ -17,26 +17,28 @@
 		}
 	</style>
 
-	<div
-		class="example-wrapper">
+	<div class="example-wrapper">
 		<h1>Organigramme de l'équipe</h1>
 		<p>
-			{% for user in filterUsers  %}
-				
-				{% if user.supHierarchique is empty %}
-					(ID Position:{{user.id}}) {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
-				{% elseif user.supHierarchique == "Paul Stone" %}
-				&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:{{user.id}}) {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
-				{% elseif  user.supHierarchique == "Paul Martin" %}
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:{{user.id}}) {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
-				{% elseif user.supHierarchique == "Justine Dupond" %}
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:{{user.id}}) {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>							
-				{% else %}
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ID Position:{{user.id}}) {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
-				{% endif %}
-				
-			{% endfor %}
+			{% for user in users %}
+				{% for place in hierarchie %}
+					{% set i = loop.index %}
 
+					{% if user.supHierarchique == place %}
+						{% for j in 1.. i %}
+							&nbsp; &nbsp;
+						{% endfor %}
+
+						{{user.id}}
+						{{user.firstname}}
+						{{user.lastname}}
+						({{user.label}})
+						<br>
+
+					{% endif %}
+				{% endfor %}
+
+			{% endfor %}
 
 		</p>
 
