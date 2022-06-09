@@ -74,69 +74,22 @@ class TeamController extends AbstractController
             $full[]=$afull;}
         
         }
-           // echo count($users);
-        //    echo $elementUser->getFirstname()."<br>"; 
-        //     // echo $elementUser->getFirstname();        
-        //     foreach($positions as $elementPosition) {
-        //         echo"user n°: ". $elementUser->getId()."==".$i."<br>";      
-        //         if(($elementUser->getId()==$i)){
-        //             echo "position: ".$i."<br>";
-                   
-        //             //$afull['position']=$elementUser->getPositions();
-        //      $afull['user']=$elementPosition->getUsers();
-        //             $afull['firstname']=$elementUser->getFirstname();
-        //             $afull['lastname']=$elementUser->getLastname();
-        //             $afull['label']=$elementPosition->getLabel();
-        //             $full[]=$afull;
-        //         //
-        //         }
-              
-        //     $i++;    
-        //  }
-        
-        // }
-        //  var_dump(count($full));
-        // // $user['findOneBy'] = $repository->findOneBy(['nom' => 'Albert']); // Rechercher un seul produit par son nom
-
-
-        // // $user['find'] = $repository->find(1);
-
-        // // $user['findBy'] =  $repository->findBy( ['nom' => 'Iguane'],
-        // // ['age' => 'ASC'],6,0);
-
-        // $indice = 0;
-        // $allUser = [];
-
-        // // foreach ($users as $element) {
-        // // //     //
-        // // //     $aUser['id'] = $element->getId();
-        // //      $aUser['firstname'] = $element->getFirstname();
-        // //      $aUser['lastname'] = $element->getLastname();
-        // //      $aUser['supHierarchique'] = $element->getSupHierarchique();
-        // //      $aUser['photo'] = $element->getPhoto();
-        // //      $aUser['position']=$element->getPositions();
-        // //      //$aUser['label']=$element->$positions;
-        // // //     //var_dump($element->getPositions()->find(1));
-        // //     foreach ($positions as $label) {
-        // //          if ($indice == $label->getUser()) {
-        // //              $aUser['label'] = $label->getLabel();
-        // //          } else {$aUser['label'] = "Dev";}
-        // //      }
-        // //     //var_dump($aUser);
-        // //      $filterUser[] = $allUser;
-        // // //     //var_dump($filterUser);
-        // //      $indice++;
-        // //  }
-        
-        //error_log(print_r($message,1));
-        
-        //var_dump($users);
-        $filterUser=[];
-        
+         foreach ($full as $keys => $value) {
+         $marks[$keys]=$value["supHierarchique"];
+         
+         }
+         foreach ($full as $keys1 => $value1) {
+             $mark1[$keys1]=$value1["id"];
+         }
+        array_multisort($marks,SORT_ASC,$mark1,SORT_DESC,$full);
+         //var_dump($full);
+        echo count($full);
+        echo $full[0]["firstname"];
             return $this->render('team/organigramme.html.twig', [
             'users'=>$users,
             "position"=>$positions,
-            "filterUsers"=>$full
+            "filterUsers"=>$full,
+            "organigramme"=>$full
         ]); 
         //Envoie la vue sur la page twig
 

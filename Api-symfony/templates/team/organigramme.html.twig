@@ -32,7 +32,7 @@
 				{% elseif user.supHierarchique == "Justine Dupond" %}
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>							
 				{% else %}
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.id}} {{user.firstname}} {{user.lastname}}({{user.label}})[{{user.supHierarchique}}]<br>
 				{% endif %}
 				
 			{% endfor %}
