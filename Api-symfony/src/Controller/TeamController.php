@@ -88,6 +88,21 @@ class TeamController extends AbstractController
         }
         array_multisort($marks, SORT_ASC, $mark1, SORT_DESC, $full);
         //var_dump($full);
+        // fonction tri arborescence
+        function addtree ($father, $array) {
+            echo "<ul>\n";
+           while ( list ($tag,$value) = each ($array) ) {
+                    if ( is_array($value)==TRUE) {
+                            echo "<li>$father -> $tag noeud<br>\n";
+                            addtree($tag,$value);
+                            } else {
+                            echo "<li>$father -> $tag : $value<br>\n";
+                            }
+                    }
+            echo "</ul>\n";
+            }
+
+            
         echo count($full);
         echo $full[0]["firstname"];
         return $this->render('team/organigramme.html.twig', [
