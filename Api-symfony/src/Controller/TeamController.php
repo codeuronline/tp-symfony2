@@ -56,7 +56,7 @@ class TeamController extends AbstractController
                 if (count($afull['position']) > 1) {
                     foreach ($aLabel as $multiLabel) {
                         $afull['id'] = $multiLabel->getId();
-                        $afull['label'] .= $multiLabel->getLabel();
+                        $afull['label'] .= "/".$multiLabel->getLabel();
                     }
                 } else {
                     if ($afull['id'] = $aLabel->getId()) {
