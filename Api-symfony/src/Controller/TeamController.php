@@ -106,7 +106,7 @@ class TeamController extends AbstractController
                     $trifinal[]= tri($hierarchie, $listemembre, $profondeur - 1,$compteur);
                 } else {
                     var_dump('feuille');
-                    $trifinal[] = $member;
+                    $trifinal[$i] = $member;
                 }
             }
             
@@ -120,20 +120,15 @@ class TeamController extends AbstractController
         $tri = tri($hierarchie, $full, 3,0);
         $filterUsers = $full;
        ;
-       
-    //    var_dump(count($tri));
-        // var_dump($tri);
-        
-        //var_dump(count($tri));
-        // echo count($full);
-        // echo $full[0]["firstname"];
+
         return $this->render(
             'team/organigramme.html.twig',
            // compact('users', 'filterUsers', 'hierarchie', 'tri')
-            [ 'users' => $full,//$tri[7],
+            [   'users' => $full,//$tri[7],
             // "filterUsers" => $full,
-             "hierarchie" => $hierarchie
-            // 
+                'hierarchie' => $hierarchie,
+                'tri' => $tri
+             // 
             ]
         );
         //Envoie la vue sur la page twig
