@@ -136,7 +136,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
                     // line 32
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 32), "html", null, true);
                     echo "
-\t\t\t\t\t\t<img width='25px' heigh='25px' src=\"../img/";
+\t\t\t\t\t\t<img width='40px' heigh='40px' src=\"../img/";
                     // line 33
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "photo", [], "any", false, false, false, 33), "html", null, true);
                     echo "\" alt=\"photo de ";
@@ -241,7 +241,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t\t\t\t\t\t{% endfor %}
 
 \t\t\t\t\t\t{{user.id}}
-\t\t\t\t\t\t<img width='25px' heigh='25px' src=\"../img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\">
+\t\t\t\t\t\t<img width='40px' heigh='40px' src=\"../img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\">
 \t\t\t\t\t\t{{user.firstname}}
 \t\t\t\t\t\t{{user.lastname}}
 \t\t\t\t\t\t({{user.label}})

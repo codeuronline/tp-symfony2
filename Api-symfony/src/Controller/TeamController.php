@@ -77,7 +77,7 @@ class TeamController extends AbstractController
         }
 
      
-        var_dump($hiearchie);
+        // var_dump($hiearchie);
         $hierarchie = array_values(array_unique($hiearchie));
         //echo count($newtable) . "&nbsp;&nbsp;";
 
@@ -93,23 +93,20 @@ class TeamController extends AbstractController
         {  
             
             $compteur++;
-            var_dump("-----------");
-            var_dump($compteur);
             for ($i=0;$i<$profondeur;$i++)
                 {
                 error_log("profond : ".$profondeur);
-                var_dump($profondeur);
                 foreach ($listemembre as $member)
                 {
                     error_log("member :".print_r($member['lastname'], 1));
-                    var_dump($member['lastname']);
+           
                 if ($member["supHierarchique"] = $hierarchie[$i]) {
                     var_dump('noeud');
                     
-                    $trifinal[$i]= tri($hierarchie, $listemembre, $profondeur - 1,$compteur);
+                    $trifinal[]= tri($hierarchie, $listemembre, $profondeur - 1,$compteur);
                 } else {
                     var_dump('feuille');
-                    $trifinal[$i] = $member;
+                    $trifinal[] = $member;
                 }
             }
             
@@ -117,15 +114,15 @@ class TeamController extends AbstractController
         }
     }
          $users = $full;
-         var_dump($hierarchie);
+         
         $p= count ($hierarchie);
         
         $tri = tri($hierarchie, $full, 3,0);
         $filterUsers = $full;
        ;
        
-       var_dump(count($tri));
-        var_dump($tri);
+    //    var_dump(count($tri));
+        // var_dump($tri);
         
         //var_dump(count($tri));
         // echo count($full);
