@@ -76,8 +76,8 @@ class TeamController extends AbstractController
         echo count($newtable) . "&nbsp;&nbsp;";
         var_dump($newtable);
         $newtable = array_values(array_unique($newtable));
-        echo count($newtable) . "&nbsp;&nbsp;";
-        
+        //echo count($newtable) . "&nbsp;&nbsp;";
+
         var_dump($newtable);
         //solution de tri via array_multisort
         foreach ($full as $keys => $value) {
@@ -86,30 +86,57 @@ class TeamController extends AbstractController
         foreach ($full as $keys1 => $value1) {
             $mark1[$keys1] = $value1["id"];
         }
-        array_multisort($marks, SORT_ASC, $mark1, SORT_DESC, $full);
+
+        function tri($hiearchie, $listemembre, $profondeur)
+        {
+        
+        $trifinal = [];
+        for ($profondeur; $profondeur = 0; $profondeur--) {
+            foreach ($listemembre as $member) {
+                if ($member["supHiearchique"] != $hiearchie[$profondeur]) {
+                    tri($hiearchie, $listemembre, $profondeur - 1);
+                } else {
+                    $trifinal[] = $member;;
+                }
+            }
+            return $trifinal;
+        }
+    }
+
+
+
+
+
+        // array_multisort($marks, SORT_ASC, $mark1, SORT_DESC, $full);
         //var_dump($full);
         // fonction tri arborescence
-        function addtree ($father, $array) {
-            echo "<ul>\n";
-           while ( list ($tag,$value) = each ($array) ) {
-                    if ( is_array($value)==TRUE) {
-                            echo "<li>$father -> $tag noeud<br>\n";
-                            addtree($tag,$value);
-                            } else {
-                            echo "<li>$father -> $tag : $value<br>\n";
-                            }
-                    }
-            echo "</ul>\n";
-            }
-
-            
-        echo count($full);
-        echo $full[0]["firstname"];
-        return $this->render('team/organigramme.html.twig', [
-            'users' => $full,
-            "filterUsers" => $full,
-            "hierarchie" => $newtable
-        ]);
+        // function addtree ($father, $array) {
+        //     echo "<ul>\n";
+        //    while ( list ($tag,$value) = each ($array) ) {
+        //             if ( is_array($value)==TRUE) {
+        //                     echo "<li>$father -> $tag noeud<br>\n";
+        //                     addtree($tag,$value);
+        //                     } else {
+        //                     echo "<li>$father -> $tag : $value<br>\n";
+        //                     }
+        //             }
+        //     echo "</ul>\n";
+        //     }
+        $users = $full;
+        $hierarchie = $newtable;
+        $tri = tri($hierarchie, $full, count($hierarchie));
+        $filterUsers = $full;
+        var_dump($tri);
+        // echo count($full);
+        // echo $full[0]["firstname"];
+        return $this->render(
+            'team/organigramme.html.twig',
+            compact('users', 'filterUsers', 'hierarchie', 'tri')
+            // 'users' => $full,
+            // "filterUsers" => $full,
+            // "hierarchie" => $newtable
+            // ]
+        );
         //Envoie la vue sur la page twig
 
     }
