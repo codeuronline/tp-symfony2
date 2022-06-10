@@ -66,6 +66,7 @@ class TeamController extends AbstractController
                 $full[] = $afull;
             }
         }
+        var_dump($full);
         // nouveau tableau de tri
         echo count($full) . "&nbsp;&nbsp;";
         $newtable = [];
@@ -90,12 +91,13 @@ class TeamController extends AbstractController
         function tri($hiearchie, $listemembre, $profondeur)
         {
         
-        $trifinal = [];
         for ($profondeur; $profondeur = 0; $profondeur--) {
             foreach ($listemembre as $member) {
                 if ($member["supHiearchique"] != $hiearchie[$profondeur]) {
+                    error_log('noeud');
                     tri($hiearchie, $listemembre, $profondeur - 1);
                 } else {
+                    error_log('feuille');
                     $trifinal[] = $member;;
                 }
             }
