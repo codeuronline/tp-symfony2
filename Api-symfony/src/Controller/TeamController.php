@@ -51,14 +51,15 @@ class TeamController extends AbstractController
             $afull['lastname'] = $elementUser->getLastname();
             $afull['photo'] = $elementUser->getPhoto();
             $afull['supHierarchique'] = $elementUser->getSupHierarchique();
+            // $afull['label'] = [];
             foreach ($afull['position'] as $aLabel) {
                 //oninitailise le label
-                $afull['label'] = [];
+                
                 //si position contient plus  de 2 label
-                if (count($afull['position']) > 1) {
+                if (count($afull['position']) > 1 &&isset($afull['label'])) {
                     foreach ($aLabel as $multiLabel) {
                         $afull['id'] = $multiLabel->getId();
-                        $afull['label'] .= "/".$multiLabel->getLabel();
+                        $afull['label'] = $afull['label']."/".$multiLabel->getLabel();
                     }
                 } else {
                     if ($afull['id'] = $aLabel->getId()) {
@@ -88,7 +89,23 @@ class TeamController extends AbstractController
         foreach ($full as $keys1 => $value1) {
             $mark1[$keys1] = $value1["id"];
         }
-
+/**  
+ * function de tri 
+*/
+        $tri=[];
+        
+        for ($j=0;$j<count($full);$j) {
+            for ($i=0; $i < count($hierarchie) ; $i++) { 
+             if (($full[$j]["supHierarchique"]== $hierarchie[$i]) && in_array($full,$tri)){
+                echo "bob";
+             } else{$tri[$j]=$full;}
+            }    
+        }
+        echo count($tri);
+        var_dump($tri);
+/**  
+ * function de tri 
+*/
         function tri($hierarchie, $listemembre,$profondeur,$compteur)
         {  
             
@@ -120,7 +137,6 @@ class TeamController extends AbstractController
         $tri = tri($hierarchie, $full, 3,0);
         $filterUsers = $full;
        ;
-
         return $this->render(
             'team/organigramme.html.twig',
            // compact('users', 'filterUsers', 'hierarchie', 'tri')
