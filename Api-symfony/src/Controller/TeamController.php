@@ -52,7 +52,9 @@ class TeamController extends AbstractController
             $afull['photo'] = $elementUser->getPhoto();
             $afull['supHierarchique'] = $elementUser->getSupHierarchique();
             foreach ($afull['position'] as $aLabel) {
+                //oninitailise le label
                 $afull['label'] = [];
+                //si position contient plus  de 2 label
                 if (count($afull['position']) > 1) {
                     foreach ($aLabel as $multiLabel) {
                         $afull['id'] = $multiLabel->getId();
@@ -66,21 +68,20 @@ class TeamController extends AbstractController
                 $full[] = $afull;
             }
         }
-        var_dump($full);
+   
         // nouveau tableau de tri
-        echo count($full) . "&nbsp;&nbsp;";
-        $newtable = [];
+     
+        $hiearchie = [];
         foreach ($full as $table) {
-            $newtable[] = $table["supHierarchique"];
+            $hiearchie[] = $table["supHierarchique"];
         }
 
-        echo count($newtable) . "&nbsp;&nbsp;";
-        var_dump($newtable);
-        $newtable = array_values(array_unique($newtable));
+     
+        var_dump($hiearchie);
+        $hierarchie = array_values(array_unique($hiearchie));
         //echo count($newtable) . "&nbsp;&nbsp;";
 
-        var_dump($newtable);
-        //solution de tri via array_multisort
+       //solution de tri via array_multisort
         foreach ($full as $keys => $value) {
             $marks[$keys] = $value["supHierarchique"];
         }
@@ -88,56 +89,55 @@ class TeamController extends AbstractController
             $mark1[$keys1] = $value1["id"];
         }
 
-        function tri($hiearchie, $listemembre, $profondeur)
-        {
-        
-        for ($profondeur; $profondeur = 0; $profondeur--) {
-            foreach ($listemembre as $member) {
-                if ($member["supHiearchique"] != $hiearchie[$profondeur]) {
-                    error_log('noeud');
-                    tri($hiearchie, $listemembre, $profondeur - 1);
+        function tri($hierarchie, $listemembre,$profondeur,$compteur)
+        {  
+            
+            $compteur++;
+            var_dump("-----------");
+            var_dump($compteur);
+            for ($i=0;$i<$profondeur;$i++)
+                {
+                error_log("profond : ".$profondeur);
+                var_dump($profondeur);
+                foreach ($listemembre as $member)
+                {
+                    error_log("member :".print_r($member['lastname'], 1));
+                    var_dump($member['lastname']);
+                if ($member["supHierarchique"] = $hierarchie[$i]) {
+                    var_dump('noeud');
+                    
+                    $trifinal[$i]= tri($hierarchie, $listemembre, $profondeur - 1,$compteur);
                 } else {
-                    error_log('feuille');
-                    $trifinal[] = $member;;
+                    var_dump('feuille');
+                    $trifinal[$i] = $member;
                 }
             }
+            
             return $trifinal;
         }
     }
-
-
-
-
-
-        // array_multisort($marks, SORT_ASC, $mark1, SORT_DESC, $full);
-        //var_dump($full);
-        // fonction tri arborescence
-        // function addtree ($father, $array) {
-        //     echo "<ul>\n";
-        //    while ( list ($tag,$value) = each ($array) ) {
-        //             if ( is_array($value)==TRUE) {
-        //                     echo "<li>$father -> $tag noeud<br>\n";
-        //                     addtree($tag,$value);
-        //                     } else {
-        //                     echo "<li>$father -> $tag : $value<br>\n";
-        //                     }
-        //             }
-        //     echo "</ul>\n";
-        //     }
-        $users = $full;
-        $hierarchie = $newtable;
-        $tri = tri($hierarchie, $full, count($hierarchie));
+         $users = $full;
+         var_dump($hierarchie);
+        $p= count ($hierarchie);
+        
+        $tri = tri($hierarchie, $full, 3,0);
         $filterUsers = $full;
+       ;
+       
+       var_dump(count($tri));
         var_dump($tri);
+        
+        //var_dump(count($tri));
         // echo count($full);
         // echo $full[0]["firstname"];
         return $this->render(
             'team/organigramme.html.twig',
-            compact('users', 'filterUsers', 'hierarchie', 'tri')
-            // 'users' => $full,
+           // compact('users', 'filterUsers', 'hierarchie', 'tri')
+            [ 'users' => $full,//$tri[7],
             // "filterUsers" => $full,
-            // "hierarchie" => $newtable
-            // ]
+             "hierarchie" => $hierarchie
+            // 
+            ]
         );
         //Envoie la vue sur la page twig
 
