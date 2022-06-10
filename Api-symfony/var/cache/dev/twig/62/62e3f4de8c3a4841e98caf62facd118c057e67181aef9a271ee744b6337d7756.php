@@ -136,23 +136,31 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
                     // line 32
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 32), "html", null, true);
                     echo "
-\t\t\t\t\t\t";
+\t\t\t\t\t\t<img width='25px' heigh='25px' src=\"../img/";
                     // line 33
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "photo", [], "any", false, false, false, 33), "html", null, true);
+                    echo "\" alt=\"photo de ";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 33), "html", null, true);
-                    echo "
+                    echo " ";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 33), "html", null, true);
+                    echo "\">
 \t\t\t\t\t\t";
                     // line 34
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 34), "html", null, true);
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 34), "html", null, true);
+                    echo "
+\t\t\t\t\t\t";
+                    // line 35
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 35), "html", null, true);
                     echo "
 \t\t\t\t\t\t(";
-                    // line 35
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "label", [], "any", false, false, false, 35), "html", null, true);
+                    // line 36
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "label", [], "any", false, false, false, 36), "html", null, true);
                     echo ")
 \t\t\t\t\t\t<br>
 
 \t\t\t\t\t";
                 }
-                // line 39
+                // line 40
                 echo "\t\t\t\t";
                 ++$context['loop']['index0'];
                 ++$context['loop']['index'];
@@ -166,14 +174,14 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['place'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 40
+            // line 41
             echo "
 \t\t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 42
+        // line 43
         echo "
 \t\t</p>
 
@@ -196,7 +204,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 
     public function getDebugInfo()
     {
-        return array (  177 => 42,  170 => 40,  156 => 39,  149 => 35,  145 => 34,  141 => 33,  137 => 32,  134 => 31,  127 => 29,  122 => 28,  120 => 27,  117 => 26,  114 => 25,  96 => 24,  92 => 23,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
+        return array (  185 => 43,  178 => 41,  164 => 40,  157 => 36,  153 => 35,  149 => 34,  141 => 33,  137 => 32,  134 => 31,  127 => 29,  122 => 28,  120 => 27,  117 => 26,  114 => 25,  96 => 24,  92 => 23,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -233,6 +241,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t\t\t\t\t\t{% endfor %}
 
 \t\t\t\t\t\t{{user.id}}
+\t\t\t\t\t\t<img width='25px' heigh='25px' src=\"../img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\">
 \t\t\t\t\t\t{{user.firstname}}
 \t\t\t\t\t\t{{user.lastname}}
 \t\t\t\t\t\t({{user.label}})
