@@ -32,26 +32,46 @@ class TeamController extends AbstractController
      * @Route("/team/organigramme/user/{id}", name="app_team_organigramme_user/{id}")
      */
 
-     public function user($id){
+    public function user($id)
+    {
         $doctrine = $this->get('doctrine');
-        $aUser = $doctrine->getRepository(Team::class)->findOneBy(['id'=>$id]); //Récupérer une collection d'objets
-        $positions = $doctrine->getRepository(Position::class)->findOneBy(['id'=>$id]);
-        $user=[];
-        $user['id']=$aUser->getId();
-        $user['firstname']=$aUser->getFirstname();
-        $user['lastname']=$aUser->getLastname();
+        $aUser = $doctrine->getRepository(Team::class)->findOneBy(['id' => $id]); //Récupérer une collection d'objets
+        $positions = $doctrine->getRepository(Position::class)->findAll();
+        $user = [];
+        $user['id'] = $aUser->getId();
+        $user['firstname'] = $aUser->getFirstname();
+        $user['lastname'] = $aUser->getLastname();
         $user['photo'] = $aUser->getPhoto();
-        $user['label']= $positions->getLabel();
+        $user['position'] = $aUser->getPositions();
+        $user['age'] =   $aUser->getAge();
+        $user['mail'] = $aUser->getMail();
+        $user['adresse'] = $aUser->getAdresse();
+        $user['tel'] = $aUser->getTel();
         $user['supHierarchique'] = $aUser->getSupHierarchique();
+        foreach ($user['position'] as $aLabel) {
+            //on initailise le label
+
+            //si position contient plus  de 2 label
+            if (count($user['position']) > 1 && isset($auser['label'])) {
+                foreach ($aLabel as $multiLabel) {
+                    $user['id'] = $multiLabel->getId();
+                    $user['label'] = $aUser['label'] . "/" . $multiLabel->getLabel();
+                }
+            } else {
+                if ($user['id'] = $aLabel->getId()) {
+                    $user['label'] = $aLabel->getLabel();
+                }
+            }
+        }
         return $this->render(
             'team/user.html.twig',
-           // compact('users', 'filterUsers', 'hierarchie', 'tri')
-            [   
-                'user' => $user,           
+            // compact('users', 'filterUsers', 'hierarchie', 'tri')
+            [
+                'user' => $user,
             ]
         );
-     }
-    
+    }
+
     /**
      * @Route("/team/organigramme", name="app_team_organigramme")
      */
@@ -78,12 +98,12 @@ class TeamController extends AbstractController
             // $afull['label'] = [];
             foreach ($afull['position'] as $aLabel) {
                 //oninitailise le label
-                
+
                 //si position contient plus  de 2 label
-                if (count($afull['position']) > 1 &&isset($afull['label'])) {
+                if (count($afull['position']) > 1 && isset($afull['label'])) {
                     foreach ($aLabel as $multiLabel) {
                         $afull['id'] = $multiLabel->getId();
-                        $afull['label'] = $afull['label']."/".$multiLabel->getLabel();
+                        $afull['label'] = $afull['label'] . "/" . $multiLabel->getLabel();
                     }
                 } else {
                     if ($afull['id'] = $aLabel->getId()) {
@@ -93,31 +113,31 @@ class TeamController extends AbstractController
                 $full[] = $afull;
             }
         }
-   
+
         // nouveau tableau de tri
-     
+
         $hiearchie = [];
         foreach ($full as $table) {
             $hiearchie[] = $table["supHierarchique"];
         }
 
-     
+
         // var_dump($hiearchie);
         $hierarchie = array_values(array_unique($hiearchie));
         //echo count($newtable) . "&nbsp;&nbsp;";
 
-       //solution de tri via array_multisort
+        //solution de tri via array_multisort
         foreach ($full as $keys => $value) {
             $marks[$keys] = $value["supHierarchique"];
         }
         foreach ($full as $keys1 => $value1) {
             $mark1[$keys1] = $value1["id"];
         }
-/**  
- * function de tri 
-*/
-        $tri=[];
-        
+        /**  
+         * function de tri 
+         */
+        $tri = [];
+
         /*for ($j=0;$j<count($full);$j) {
             for ($i=0; $i < count($hierarchie) ; $i++) { 
              if (($full[$j]["supHierarchique"]== $hierarchie[$i]) && in_array($full,$tri)){
@@ -127,48 +147,46 @@ class TeamController extends AbstractController
         }
         echo count($tri);
         var_dump($tri);*/
-/**  
- * function de tri 
-*/
-        function tri($hierarchie, $listemembre,$profondeur,$compteur)
-        {  
-            
+        /**  
+         * function de tri 
+         */
+        function tri($hierarchie, $listemembre, $profondeur, $compteur)
+        {
+
             $compteur++;
-            for ($i=0;$i<$profondeur;$i++)
-                {
-                error_log("profond : ".$profondeur);
-                foreach ($listemembre as $member)
-                {
-                    error_log("member :".print_r($member['lastname'], 1));
-           
-                if ($member["supHierarchique"] = $hierarchie[$i]) {
-                    var_dump('noeud');
-                    
-                    $trifinal[]= tri($hierarchie, $listemembre, $profondeur - 1,$compteur);
-                } else {
-                    var_dump('feuille');
-                    $trifinal[$i] = $member;
+            for ($i = 0; $i < $profondeur; $i++) {
+                error_log("profond : " . $profondeur);
+                foreach ($listemembre as $member) {
+                    error_log("member :" . print_r($member['lastname'], 1));
+
+                    if ($member["supHierarchique"] = $hierarchie[$i]) {
+                        var_dump('noeud');
+
+                        $trifinal[] = tri($hierarchie, $listemembre, $profondeur - 1, $compteur);
+                    } else {
+                        var_dump('feuille');
+                        $trifinal[$i] = $member;
+                    }
                 }
+
+                return $trifinal;
             }
-            
-            return $trifinal;
         }
-    }
-         $users = $full;
-         
-        $p= count ($hierarchie);
-        
-        $tri = tri($hierarchie, $full, 3,0);
-        $filterUsers = $full;
-       ;
+        $users = $full;
+
+        $p = count($hierarchie);
+
+        $tri = tri($hierarchie, $full, 3, 0);
+        $filterUsers = $full;;
         return $this->render(
             'team/organigramme.html.twig',
-           // compact('users', 'filterUsers', 'hierarchie', 'tri')
-            [   'users' => $full,//$tri[7],
-            // "filterUsers" => $full,
+            // compact('users', 'filterUsers', 'hierarchie', 'tri')
+            [
+                'users' => $full, //$tri[7],
+                // "filterUsers" => $full,
                 'hierarchie' => $hierarchie,
                 'tri' => $tri
-             // 
+                // 
             ]
         );
         //Envoie la vue sur la page twig
