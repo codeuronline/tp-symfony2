@@ -18,10 +18,10 @@
 	</style>
 
 	<div class="example-wrapper">
-		<h1>Membre</h1>
+		<h1>{{user.firstname}} {{user.lastname}}({{user.label}}) </h1>
 		<p>
-						<h2>{{user.id}}<img width='40px' heigh='40px' src="../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}"></h2>
-						<h2>{{user.firstname}} {{user.lastname}}</h2>({{user.label}})
+						<h2><img width='50px' heigh='50px' src="../../../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}"></h2>
+						<h2><a href="cv_{{user.lastname}}.pdf">le CV</h2>
 						<br>
 		</p>
 	</div>

@@ -34,9 +34,15 @@ class TeamController extends AbstractController
 
      public function user($id){
         $doctrine = $this->get('doctrine');
-        $user = $doctrine->getRepository(Team::class)->findOneBy(['id'=>$id]); //Récupérer une collection d'objets
-        $positions = $doctrine->getRepository(Position::class)->findOneBy(['id_team'=>$id]);
-        
+        $aUser = $doctrine->getRepository(Team::class)->findOneBy(['id'=>$id]); //Récupérer une collection d'objets
+        $positions = $doctrine->getRepository(Position::class)->findOneBy(['id'=>$id]);
+        $user=[];
+        $user['id']=$aUser->getId();
+        $user['firstname']=$aUser->getFirstname();
+        $user['lastname']=$aUser->getLastname();
+        $user['photo'] = $aUser->getPhoto();
+        $user['label']= $positions->getLabel();
+        $user['supHierarchique'] = $aUser->getSupHierarchique();
         return $this->render(
             'team/user.html.twig',
            // compact('users', 'filterUsers', 'hierarchie', 'tri')
