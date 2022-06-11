@@ -29,6 +29,24 @@ class TeamController extends AbstractController
 
 
     /**
+     * @Route("/team/organigramme/user/{id}", name="app_team_organigramme_user/{id}")
+     */
+
+     public function user($id){
+        $doctrine = $this->get('doctrine');
+        $user = $doctrine->getRepository(Team::class)->findOneBy(['id'=>$id]); //Récupérer une collection d'objets
+        $positions = $doctrine->getRepository(Position::class)->findOneBy(['id_team'=>$id]);
+        
+        return $this->render(
+            'team/user.html.twig',
+           // compact('users', 'filterUsers', 'hierarchie', 'tri')
+            [   
+                'user' => $user,           
+            ]
+        );
+     }
+    
+    /**
      * @Route("/team/organigramme", name="app_team_organigramme")
      */
 
@@ -94,7 +112,7 @@ class TeamController extends AbstractController
 */
         $tri=[];
         
-        for ($j=0;$j<count($full);$j) {
+        /*for ($j=0;$j<count($full);$j) {
             for ($i=0; $i < count($hierarchie) ; $i++) { 
              if (($full[$j]["supHierarchique"]== $hierarchie[$i]) && in_array($full,$tri)){
                 echo "bob";
@@ -102,7 +120,7 @@ class TeamController extends AbstractController
             }    
         }
         echo count($tri);
-        var_dump($tri);
+        var_dump($tri);*/
 /**  
  * function de tri 
 */

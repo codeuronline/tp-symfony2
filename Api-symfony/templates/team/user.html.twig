@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block Accueil %}Organigramme
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<div class="example-wrapper">
+		<h1>Membre</h1>
+		<p>
+						<h2>{{user.id}}<img width='40px' heigh='40px' src="../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}"></h2>
+						<h2>{{user.firstname}} {{user.lastname}}</h2>({{user.label}})
+						<br>
+		</p>
+	</div>
+{% endblock %}

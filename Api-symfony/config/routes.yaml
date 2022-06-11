@@ -5,3 +5,9 @@
 team:
    path: /
    controller: App\Controller\TeamController::organigramme
+   methods:    GET|HEAD
+
+# user:
+#    path: /{id}
+#    controlle: App\Controller\TeamController::user
+#    methods:    GET|HEAD
