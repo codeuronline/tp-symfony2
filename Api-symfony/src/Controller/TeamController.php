@@ -34,11 +34,11 @@ class TeamController extends AbstractController
 
     public function user($id)
     {
-        $doctrine = $this->get('doctrine');
-        $users = $doctrine->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
+
+        $users = $this->$this->getDoctrine()->getEntityManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
         //$positions = $doctrine->getRepository(Position::class)->findAll();
         $user = [];
-       
+
         foreach ($users as $elementUser) {
             $aUser = [];
             $aUser['id'] = $elementUser->getId();
@@ -70,17 +70,17 @@ class TeamController extends AbstractController
                 $user[] = $aUser;
             }
         }
-        
-        $pagination['max']=count($user);
-        $pagination['min']=0;
-        $pagination['self']=$user[$id]['id'];
-        var_dump($pagination);
+
+        $pagination['max'] = count($user);
+        $pagination['min'] = 0;
+        $pagination['self'] = $user[$id]['id'];
+        //ar_dump($pagination);
         return $this->render(
             'team/user.html.twig',
             // compact('users', 'filterUsers', 'hierarchie', 'tri')
             [
                 'user' => $user[$id],
-                'pagination'=> $pagination
+                'pagination' => $pagination
             ]
         );
     }
@@ -94,7 +94,8 @@ class TeamController extends AbstractController
 
         $doctrine = $this->get('doctrine');
         $users = $doctrine->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
-        $positions = $doctrine->getRepository(Position::class)->findAll();
+        //$positions = $doctrine->getRepository(Position::class)->findAll();
+        //$position = $doctrine->getRepository(Position::class);
 
 
 
@@ -107,10 +108,13 @@ class TeamController extends AbstractController
             $afull['firstname'] = $elementUser->getFirstname();
             $afull['lastname'] = $elementUser->getLastname();
             $afull['photo'] = $elementUser->getPhoto();
+
             $afull['supHierarchique'] = $elementUser->getSupHierarchique();
-            // $afull['label'] = [];
+            $afull['label'] = [];
+            //$afull['label'] = (null !== ($position->findOneBy(['id' => $afull['id']]))) ? $position->findOneBy(['id' => $afull['id']])->getLabel() : $afull['position']->getLabel();
+            //$afull['label'] = (null !== ($position->find($afull['id'])))             ? $position->find($afull['id'])->getLabel()              : $afull['position']->getLabel();
             foreach ($afull['position'] as $aLabel) {
-                //oninitailise le label
+                // on initailise le label
 
                 //si position contient plus  de 2 label
                 if (count($afull['position']) > 1 && isset($afull['label'])) {
@@ -173,11 +177,11 @@ class TeamController extends AbstractController
                     error_log("member :" . print_r($member['lastname'], 1));
 
                     if ($member["supHierarchique"] = $hierarchie[$i]) {
-                        var_dump('noeud');
+                        // var_dump('noeud');
 
                         $trifinal[] = tri($hierarchie, $listemembre, $profondeur - 1, $compteur);
                     } else {
-                        var_dump('feuille');
+                        // var_dump('feuille');
                         $trifinal[$i] = $member;
                     }
                 }
