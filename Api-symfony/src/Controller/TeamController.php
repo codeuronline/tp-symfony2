@@ -35,39 +35,52 @@ class TeamController extends AbstractController
     public function user($id)
     {
         $doctrine = $this->get('doctrine');
-        $aUser = $doctrine->getRepository(Team::class)->findOneBy(['id' => $id]); //Récupérer une collection d'objets
-        $positions = $doctrine->getRepository(Position::class)->findAll();
+        $users = $doctrine->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
+        //$positions = $doctrine->getRepository(Position::class)->findAll();
         $user = [];
-        $user['id'] = $aUser->getId();
-        $user['firstname'] = $aUser->getFirstname();
-        $user['lastname'] = $aUser->getLastname();
-        $user['photo'] = $aUser->getPhoto();
-        $user['position'] = $aUser->getPositions();
-        $user['age'] =   $aUser->getAge();
-        $user['mail'] = $aUser->getMail();
-        $user['adresse'] = $aUser->getAdresse();
-        $user['tel'] = $aUser->getTel();
-        $user['supHierarchique'] = $aUser->getSupHierarchique();
-        foreach ($user['position'] as $aLabel) {
-            //on initailise le label
+       
+        foreach ($users as $elementUser) {
+            $aUser = [];
+            $aUser['id'] = $elementUser->getId();
+            $aUser['position'] = $elementUser->getPositions();
+            $aUser['firstname'] = $elementUser->getFirstname();
+            $aUser['lastname'] = $elementUser->getLastname();
+            $aUser['photo'] = $elementUser->getPhoto();
+            $aUser['age'] = $elementUser->getAge();
+            $aUser['mail'] = $elementUser->getMail();
+            $aUser['cv'] = $elementUser->getCv();
+            $aUser['tel'] = $elementUser->getTel();
+            $aUser['adresse'] = $elementUser->getAdresse();
+            $aUser['supHierarchique'] = $elementUser->getSupHierarchique();
+            // $afull['label'] = [];
+            foreach ($aUser['position'] as $aLabel) {
+                //oninitailise le label
 
-            //si position contient plus  de 2 label
-            if (count($user['position']) > 1 && isset($auser['label'])) {
-                foreach ($aLabel as $multiLabel) {
-                    $user['id'] = $multiLabel->getId();
-                    $user['label'] = $aUser['label'] . "/" . $multiLabel->getLabel();
+                //si position contient plus  de 2 label
+                if (count($aUser['position']) > 1 && isset($aUser['label'])) {
+                    foreach ($aLabel as $multiLabel) {
+                        $aUser['id'] = $multiLabel->getId();
+                        $aUser['label'] = $aUser['label'] . "/" . $multiLabel->getLabel();
+                    }
+                } else {
+                    if ($aUser['id'] = $aLabel->getId()) {
+                        $aUser['label'] = $aLabel->getLabel();
+                    }
                 }
-            } else {
-                if ($user['id'] = $aLabel->getId()) {
-                    $user['label'] = $aLabel->getLabel();
-                }
+                $user[] = $aUser;
             }
         }
+        
+        $pagination['max']=count($user);
+        $pagination['min']=0;
+        $pagination['self']=$user[$id]['id'];
+        var_dump($pagination);
         return $this->render(
             'team/user.html.twig',
             // compact('users', 'filterUsers', 'hierarchie', 'tri')
             [
-                'user' => $user,
+                'user' => $user[$id],
+                'pagination'=> $pagination
             ]
         );
     }

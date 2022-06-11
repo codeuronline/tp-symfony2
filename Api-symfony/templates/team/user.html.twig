@@ -20,22 +20,32 @@
 	<div class="head">
 		<h1></h1>
 		<p>
-						<h2>
-                            <img width='100px' heigh='100px' src="../../../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}"> &nbsp;&nbsp;{{user.firstname}} {{user.lastname}}({{user.label}}) 
-                        </h2>
-						<h2> Age : {{user.age}} ans</h2>
-                        <h2>
-                            <img width='50px' heigh='50px' src="../../../img/pdf.png" alt="image de cv"><a href="cv_{{user.lastname}}.pdf"> Le CV </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <img width='50px' heigh='50px' src="../../../img/mail.png" alt="image de mail"><a href="mailto://{{user.mail}}"> Son mail </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        </h2>
-                        <h2>
-                            <img width='50px' heigh='50px' src="../../../img/tel.png" alt="image de tel"> Son tel : {{user.tel}} &nbsp;&nbsp;&nbsp;&nbsp;</h2>
-                        </h2>
-                        <h2>
-                            <img width='50px' heigh='50px' src="../../../img/adresse.png" alt="image d'adresse">Son adresse : {{user.adresse}} &nbsp;&nbsp;&nbsp;&nbsp;</h2>
-                        
-						<br>
-
-		</p>
+            <h2>
+                <img width='100px' heigh='100px' src="../../../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}"> &nbsp;&nbsp;{{user.firstname}} {{user.lastname}}({{user.label}}) 
+            </h2>
+            <h2> Age : {{user.age}} ans</h2>
+            <h2>
+                <img width='50px' heigh='50px' src="../../../img/pdf.png" alt="image de cv"><a href="/pdf/{{user.id}}/cv_{{user.lastname}}.pdf" alt="cv de {{user.lastname}} {{user.firstname}}"> Son CV</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <img width='50px' heigh='50px' src="../../../img/mail.png" alt="image de mail"><a href="mailto://{{user.mail}}" alt="mail de {{user.lastname}} {{user.firstname}}"> Son mail </a>
+            </h2>
+            <h2>
+                <img width='50px' heigh='50px' src="../../../img/tel.png" alt="image de tel"> Son téléphone : {{user.tel}}</h2>
+            </h2>
+            <h2>
+                <img width='50px' heigh='50px' src="../../../img/adresse.png" alt="image d'adresse">Son adresse : {{user.adresse}}
+                </h2>            
+            
+            <h2>
+               
+                {% if user.id - 1 > pagination.min %}
+                    <a href="../../organigramme/user/{{user.id - 1}}"><img width='50px' heigh='50px' src="../../../img/fleche_gauche.png"></a>
+                {% endif %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="../../organigramme/"><img width='50px' heigh='50px' src="../../../img/home.png"></a>
+                {% if user.id + 1 < pagination.max %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="../../organigramme/user/{{user.id + 1}}"><img width='50px' heigh='50px' src="../../../img/fleche_droite.png"></a>
+                {% endif %}
+            </h2>
+		<br>
+        </p>
 	</div>
 {% endblock %}
