@@ -87,7 +87,7 @@ class TeamController extends AbstractController
     {
         $user=$this->getAllTeam($doctrine,$id);
 
-    var_dump($user);
+    var_dump(count($user));
         $pagination['max'] = count($user);
         $pagination['min'] = 0;
         $pagination['self'] = $user[$id]['id'];
@@ -171,7 +171,7 @@ class TeamController extends AbstractController
         // $p = count($hierarchie);
 
         // $tri = tri($hierarchie, $full, 3, 0);
-        $filterUsers = $full;;
+        $filterUsers = $full;var_dump($hierarchie);
         return $this->render(
             'team/organigramme.html.twig',
             // compact('users', 'filterUsers', 'hierarchie', 'tri')
