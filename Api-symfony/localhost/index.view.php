@@ -54,13 +54,25 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Outils
+                            Serveur
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item" href="http://localhost:3000"><img height="70px"
+                                        src="react.png"></a>
+                            </li>
                             <li>
                                 <a class="dropdown-item" href="http://localhost:8000/team/organigramme/"><img
                                         height="70px" src="symfony.png"></a>
                             </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Outils
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
                                 <a class="dropdown-item" href="phpmyadmin"><img height="80px" src="phpmyadmin.png"></a>
                             </li>
