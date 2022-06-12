@@ -88,7 +88,7 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
 \t\t<h1>";
         // line 21
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 21, $this->source); })()), "id", [], "any", false, false, false, 21), "html", null, true);
-        echo "(";
+        echo " (";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 21, $this->source); })()), "label", [], "any", false, false, false, 21), "html", null, true);
         echo ")</h1>
 \t\t<p>
@@ -222,7 +222,7 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
 \t</style>
 
 \t<div class=\"head\">
-\t\t<h1>{{user.id}}({{user.label}})</h1>
+\t\t<h1>{{user.id}} ({{user.label}})</h1>
 \t\t<p>
             <h2>
                 <img width='100px' heigh='100px' src=\"../../../img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\"> &nbsp;&nbsp;{{user.firstname}} {{user.lastname}}

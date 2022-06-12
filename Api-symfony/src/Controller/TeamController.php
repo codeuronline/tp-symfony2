@@ -29,54 +29,104 @@ class TeamController extends AbstractController
         ]);
     }
 
+    //obtenir l'ensemble des membres de l'entreprise
+    public function getAllTeam(ManagerRegistry $doctrine,$id=null): array
+    {
+        $users = $doctrine->getManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
+        $full = [];
+        $numero = 0;
+        foreach ($users as $elementUser) {
+            $afull = [];
+
+            $afull['numero'] = $numero;
+
+            $afull['id'] = $elementUser->getId();
+
+            $afull['firstname'] = $elementUser->getFirstname();
+            $afull['lastname'] = $elementUser->getLastname();
+            $afull['supHierarchique'] = $elementUser->getSupHierarchique();
+            $afull['age'] = $elementUser->getAge();
+            $afull['adresse'] = $elementUser->getAdresse();
+            $afull['mail'] = $elementUser->getmail();
+            $afull['cv'] = $elementUser->getCv();
+            $afull['tel'] =$elementUser->getTel(); 
+            $afull['position'] = $elementUser->getPositions();
+            $afull['photo'] = $elementUser->getPhoto();
+            $key = $afull['firstname'] . " " . $afull['lastname'];
+
+            
+            foreach ($afull['position'] as $position) {
+                $positionLabel['label'] = $position->getLabel();
+
+                if (count($afull['position']) > 1) {
+
+                    if (!isset($afull['label'])) {
+                        $afull['label'] = $positionLabel['label'];
+                    } else {
+                        $afull['label'] = $afull['label'] . ' / ' . $positionLabel['label'];
+                    }
+                } else {
+                    $afull['label'] = $position->getLabel();
+                }
+                if (isset($id)){
+                    $full[]=$afull;}
+                else{
+                    $full[$key] = $afull;
+                }
+            }
+            $numero++;
+        }
+        return $full;
+    }
 
     /**
      * @Route("/team/organigramme/user/{id}", name="app_team_organigramme_user/{id}")
      */
 
-    public function user(ManagerRegistry $doctrine,$id)
+    public function user(ManagerRegistry $doctrine, $id)
     {
 
-                
-        $users = $doctrine->getManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
-        //$positions = $doctrine->getRepository(Position::class)->findAll();
-        $user = [];
-        $numero=0;
-        foreach ($users as $elementUser) {
-            $aUser = [];
-           
-            $aUser['numero']=$numero; 
-            $aUser['id'] = $elementUser->getId();
-            $aUser['position'] = $elementUser->getPositions();
-            $aUser['firstname'] = $elementUser->getFirstname();
-            $aUser['lastname'] = $elementUser->getLastname();
-            $aUser['photo'] = $elementUser->getPhoto();
-            $aUser['age'] = $elementUser->getAge();
-            $aUser['mail'] = $elementUser->getMail();
-            $aUser['cv'] = $elementUser->getCv();
-            $aUser['tel'] = $elementUser->getTel();
-            $aUser['adresse'] = $elementUser->getAdresse();
-            $aUser['supHierarchique'] = $elementUser->getSupHierarchique();
-            // $afull['label'] = [];
-            foreach ($aUser['position'] as $aLabel) {
-                //oninitailise le label
 
-                //si position contient plus  de 2 label
-                if (count($aUser['position']) > 1 && isset($aUser['label'])) {
-                    foreach ($aLabel as $multiLabel) {
-                        $aUser['id'] = $multiLabel->getId();
-                        $aUser['label'] = $aUser['label'] . "/" . $multiLabel->getLabel();
-                    }
-                } else {
-                    if ($aUser['id'] = $aLabel->getId()) {
-                        $aUser['label'] = $aLabel->getLabel();
-                    }
-                }
-                $numero++;
-                $user[] = $aUser;
-            }
-        }
+        // $users = $doctrine->getManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
+        // //  $positions = $doctrine->getRepository(Position::class)->findAll();
+        // $user = [];
+        // $numero = 0;
+        // foreach ($users as $elementUser) {
+        //     $aUser = [];
+        //     $aUser['numero'] = $numero;
+        //     $aUser['id'] = $elementUser->getId();
+        //     $aUser['position'] = $elementUser->getPositions();
+        //     $aUser['firstname'] = $elementUser->getFirstname();
+        //     $aUser['lastname'] = $elementUser->getLastname();
+        //     $aUser['photo'] = $elementUser->getPhoto();
+        //     $aUser['age'] = $elementUser->getAge();
+        //     $aUser['mail'] = $elementUser->getMail();
+        //     $aUser['cv'] = $elementUser->getCv();
+        //     $aUser['tel'] = $elementUser->getTel();
+        //     $aUser['adresse'] = $elementUser->getAdresse();
+        //     $aUser['supHierarchique'] = $elementUser->getSupHierarchique();
+        //     $afull['label'] = [];
+        //     foreach ($aUser['position'] as $aLabel) {
+        //         //oninitailise le label
 
+        //         //si position contient plus  de 2 label
+        //         if (count($aUser['position']) > 1 && isset($aUser['label'])) {
+        //             foreach ($aLabel as $multiLabel) {
+        //                 $aUser['id'] = $multiLabel->getId();
+        //                 $aUser['label'] = $aUser['label'] . "/" . $multiLabel->getLabel();
+        //             }
+        //         } else {
+        //             if ($aUser['id'] = $aLabel->getId()) {
+        //                 $aUser['label'] = $aLabel->getLabel();
+        //             }
+        //         }
+        //         $numero++;
+        //         $user[] = $aUser;
+        //     }
+        // }
+        $user=$this->getAllTeam($doctrine,$id);
+
+    var_dump($user);
         $pagination['max'] = count($user);
         $pagination['min'] = 0;
         $pagination['self'] = $user[$id]['id'];
@@ -97,56 +147,18 @@ class TeamController extends AbstractController
 
     public function organigramme(ManagerRegistry $doctrine)
     {
+        //organiser l'ensemble des membres suivant la hierarchie  de l'entrepise
         
-        $users = $doctrine->getManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
-        //$positions = $doctrine->getRepository(Position::class)->findAll();
-        //$position = $doctrine->getRepository(Position::class);
-
-
-
-        $full = [];
-        $numero=0;
-        foreach ($users as $elementUser) {
-            $afull = [];
-            $afull['numero']=$numero;
-            $afull['id'] = $elementUser->getId();
-            $afull['position'] = $elementUser->getPositions();
-            $afull['firstname'] = $elementUser->getFirstname();
-            $afull['lastname'] = $elementUser->getLastname();
-            $afull['photo'] = $elementUser->getPhoto();
-
-            $afull['supHierarchique'] = $elementUser->getSupHierarchique();
-            $afull['label'] = [];
-            //$afull['label'] = (null !== ($position->findOneBy(['id' => $afull['id']]))) ? $position->findOneBy(['id' => $afull['id']])->getLabel() : $afull['position']->getLabel();
-            //$afull['label'] = (null !== ($position->find($afull['id'])))             ? $position->find($afull['id'])->getLabel()              : $afull['position']->getLabel();
-            foreach ($afull['position'] as $aLabel) {
-                // on initailise le label
-
-                //si position contient plus  de 2 label
-                if (count($afull['position']) > 1 && isset($afull['label'])) {
-                    foreach ($aLabel as $multiLabel) {
-                        $afull['id'] = $multiLabel->getId();
-                        $afull['label'] = $afull['label'] . "/" . $multiLabel->getLabel();
-                    }
-                } else {
-                    if ($afull['id'] = $aLabel->getId()) {
-                        $afull['label'] = $aLabel->getLabel();
-                    }
-                }
-                $numero++;
-                $full[] = $afull;
-            }
-        }
-
+        $full = $this->getAllTeam($doctrine);
         // tableau de la hiearchie 
         $hierarchie = [];
         foreach ($full as $table) {
-            $hiearchie[] = $table["supHierarchique"];
+            $hierarchie[] = $table["supHierarchique"];
         }
-        $hierarchie = array_values(array_unique($hiearchie));
+        $hierarchie = array_values(array_unique($hierarchie));
         // nouveau tableau de tri
 
-        
+
         //echo count($newtable) . "&nbsp;&nbsp;";
 
         //solution de tri via array_multisort
@@ -156,9 +168,9 @@ class TeamController extends AbstractController
         // foreach ($full as $keys1 => $value1) {
         //     $mark1[$keys1] = $value1["id"];
         // }
-        
-        
-        $tri = [];
+
+
+
 
         /*for ($j=0;$j<count($full);$j) {
             for ($i=0; $i < count($hierarchie) ; $i++) { 
@@ -206,9 +218,8 @@ class TeamController extends AbstractController
             [
                 'users' => $full, //$tri[7],
                 // "filterUsers" => $full,
-                'hierarchie' => $hierarchie,
-                'tri' => $full
-                // 
+                'hierarchie' => $hierarchie
+            
             ]
         );
         //Envoie la vue sur la page twig

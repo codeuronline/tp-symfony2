@@ -6,6 +6,7 @@ use App\Repository\TeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
 
 class DefaultController extends AbstractController
 {
@@ -22,11 +23,11 @@ class DefaultController extends AbstractController
      /**
      * @Route("/default/organigramme", name="app_default_organigramme")
      */
-    public function organigramme(): Response
+    public function organigramme(ManagerRegistry $doctrine): Response
     {
 
        
-            $repository = $this->getDoctrine()->getRepository(TeamRepository::class); //Récupérer une collection d'objets
+            $repository = $doctrine->getManager()->getRepository(TeamRepository::class); //Récupérer une collection d'objets
     
             // $user['findOneBy'] = $repository->findOneBy(['nom' => 'Albert']); // Rechercher un seul produit par son nom
           
