@@ -44,8 +44,8 @@
                             <?php foreach ($directory as $key => $value) : ?>
                             <?php if (is_dir($value) && ($value != ".") && ($value != "..") && ($value != ".git") && ($value != "other") && ($value != "admin")&& ($value != "old")) : ?>
                             <li>
-                                <a class="dropdown-item" href="<?= acces_path($value) ?>"><i
-                                        class="bi bi-folder"></i><?= nom($value) ?></a>
+                                <a class="dropdown-item" href="<?= acces_path($value) ?>"><i class="bi bi-folder"></i>
+                                    &nbsp;&nbsp;<?= nom($value) ?></a>
                             </li>
                             <?php endif ?>
                             <?php endforeach ?>
@@ -59,10 +59,13 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
                                 <a class="dropdown-item" href="http://localhost:8000/team/organigramme/"><img
-                                        width="50px" src="symfony.svg"></a>
+                                        height="70px" src="symfony.png"></a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="phpmyadmin"><img width="50px" src="phpmyadmin.png"></a>
+                                <a class="dropdown-item" href="phpmyadmin"><img height="80px" src="phpmyadmin.png"></a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
                             </li>
                             <li>
                                 <a class="dropdown-item" href="other/"><i class="bi bi-folder"></i> Autres</a>
@@ -128,7 +131,7 @@
                         <div class="card-body">
                             <center>
                                 <h5 class="card-title-dark">
-                                    <i class="bi bi-folder"></i><?= nom($value) ?>
+                                    <i class="bi bi-folder"></i>&nbsp;&nbsp;<?= nom($value) ?>
                                 </h5>
                             </center>
                         </div>
