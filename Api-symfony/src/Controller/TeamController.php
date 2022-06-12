@@ -9,6 +9,8 @@ use App\Entity\Team;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
+
 
 
 
@@ -32,10 +34,11 @@ class TeamController extends AbstractController
      * @Route("/team/organigramme/user/{id}", name="app_team_organigramme_user/{id}")
      */
 
-    public function user($id)
+    public function user(ManagerRegistry $doctrine,$id)
     {
 
-        $users = $this->$this->getDoctrine()->getEntityManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
+                
+        $users = $doctrine->getManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
         //$positions = $doctrine->getRepository(Position::class)->findAll();
         $user = [];
 
@@ -89,11 +92,10 @@ class TeamController extends AbstractController
      * @Route("/team/organigramme", name="app_team_organigramme")
      */
 
-    public function organigramme()
+    public function organigramme(ManagerRegistry $doctrine)
     {
-
-        $doctrine = $this->get('doctrine');
-        $users = $doctrine->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
+        
+        $users = $doctrine->getManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
         //$positions = $doctrine->getRepository(Position::class)->findAll();
         //$position = $doctrine->getRepository(Position::class);
 

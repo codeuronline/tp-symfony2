@@ -134,7 +134,7 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
         echo "</h2>
             </h2>
             <h2>
-                <img width='50px' heigh='50px' src=\"../../../img/adresse.png\" alt=\"image d'adresse\">Son adresse : ";
+                <img width='50px' heigh='50px' src=\"../../../img/adresse.png\" alt=\"image d'adresse\"> Son adresse : ";
         // line 35
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 35, $this->source); })()), "adresse", [], "any", false, false, false, 35), "html", null, true);
         echo "
@@ -224,7 +224,7 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
                 <img width='50px' heigh='50px' src=\"../../../img/tel.png\" alt=\"image de tel\"> Son téléphone : {{user.tel}}</h2>
             </h2>
             <h2>
-                <img width='50px' heigh='50px' src=\"../../../img/adresse.png\" alt=\"image d'adresse\">Son adresse : {{user.adresse}}
+                <img width='50px' heigh='50px' src=\"../../../img/adresse.png\" alt=\"image d'adresse\"> Son adresse : {{user.adresse}}
                 </h2>            
             
             <h2>
