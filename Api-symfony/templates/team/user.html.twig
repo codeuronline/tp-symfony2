@@ -18,12 +18,15 @@
 	</style>
 
 	<div class="head">
-		<h1>{{user.id}}</h1>
+		<h1>{{user.id}} ({{user.label}})</h1>
 		<p>
             <h2>
-                <img width='100px' heigh='100px' src="../../../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}"> &nbsp;&nbsp;{{user.firstname}} {{user.lastname}}({{user.label}}) 
+                <img width='100px' heigh='100px' src="../../../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}"> &nbsp;&nbsp;{{user.firstname}} {{user.lastname}}
             </h2>
-            <h2> Age : {{user.age}} ans</h2>
+            {% if user.supHierarchique != "" %}
+            <h2>Supérieur Hierarchique : {{user.supHierarchique}}</h2>
+            {% endif %}
+                        <h2> Age : {{user.age}} ans</h2>
             <h2>
                 <img width='50px' heigh='50px' src="../../../img/pdf.png" alt="image de cv"><a href="/pdf/{{user.id}}/cv_{{user.lastname}}.pdf" alt="cv de {{user.lastname}} {{user.firstname}}"> Son CV</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <img width='50px' heigh='50px' src="../../../img/mail.png" alt="image de mail"><a href="mailto://{{user.mail}}" alt="mail de {{user.lastname}} {{user.firstname}}"> Son mail </a>
