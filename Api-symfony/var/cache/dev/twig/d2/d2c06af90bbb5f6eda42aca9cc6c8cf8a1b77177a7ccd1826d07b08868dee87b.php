@@ -85,7 +85,10 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
 \t</style>
 
 \t<div class=\"head\">
-\t\t<h1></h1>
+\t\t<h1>";
+        // line 21
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 21, $this->source); })()), "id", [], "any", false, false, false, 21), "html", null, true);
+        echo "</h1>
 \t\t<p>
             <h2>
                 <img width='100px' heigh='100px' src=\"../../../img/";
@@ -144,10 +147,10 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
                
                 ";
         // line 40
-        if ((1 === twig_compare((twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 40, $this->source); })()), "id", [], "any", false, false, false, 40) - 1), twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 40, $this->source); })()), "min", [], "any", false, false, false, 40)))) {
+        if ((0 <= twig_compare((twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 40, $this->source); })()), "numero", [], "any", false, false, false, 40) - 1), twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 40, $this->source); })()), "min", [], "any", false, false, false, 40)))) {
             // line 41
             echo "                    <a href=\"../../organigramme/user/";
-            echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 41, $this->source); })()), "id", [], "any", false, false, false, 41) - 1), "html", null, true);
+            echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 41, $this->source); })()), "numero", [], "any", false, false, false, 41) - 1), "html", null, true);
             echo "\"><img width='50px' heigh='50px' src=\"../../../img/fleche_gauche.png\"></a>
                 ";
         }
@@ -155,10 +158,10 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
         echo "                    &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/\"><img width='50px' heigh='50px' src=\"../../../img/home.png\"></a>
                 ";
         // line 44
-        if ((-1 === twig_compare((twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 44, $this->source); })()), "id", [], "any", false, false, false, 44) + 1), twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 44, $this->source); })()), "max", [], "any", false, false, false, 44)))) {
+        if ((-1 === twig_compare((twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 44, $this->source); })()), "numero", [], "any", false, false, false, 44) + 1), twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 44, $this->source); })()), "max", [], "any", false, false, false, 44)))) {
             // line 45
             echo "                    &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/user/";
-            echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 45, $this->source); })()), "id", [], "any", false, false, false, 45) + 1), "html", null, true);
+            echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 45, $this->source); })()), "numero", [], "any", false, false, false, 45) + 1), "html", null, true);
             echo "\"><img width='50px' heigh='50px' src=\"../../../img/fleche_droite.png\"></a>
                 ";
         }
@@ -185,7 +188,7 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
 
     public function getDebugInfo()
     {
-        return array (  166 => 47,  160 => 45,  158 => 44,  155 => 43,  149 => 41,  147 => 40,  139 => 35,  133 => 32,  123 => 29,  113 => 28,  108 => 26,  93 => 24,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
+        return array (  169 => 47,  163 => 45,  161 => 44,  158 => 43,  152 => 41,  150 => 40,  142 => 35,  136 => 32,  126 => 29,  116 => 28,  111 => 26,  96 => 24,  90 => 21,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -210,7 +213,7 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
 \t</style>
 
 \t<div class=\"head\">
-\t\t<h1></h1>
+\t\t<h1>{{user.id}}</h1>
 \t\t<p>
             <h2>
                 <img width='100px' heigh='100px' src=\"../../../img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\"> &nbsp;&nbsp;{{user.firstname}} {{user.lastname}}({{user.label}}) 
@@ -229,12 +232,12 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
             
             <h2>
                
-                {% if user.id - 1 > pagination.min %}
-                    <a href=\"../../organigramme/user/{{user.id - 1}}\"><img width='50px' heigh='50px' src=\"../../../img/fleche_gauche.png\"></a>
+                {% if user.numero - 1 >= pagination.min %}
+                    <a href=\"../../organigramme/user/{{user.numero - 1}}\"><img width='50px' heigh='50px' src=\"../../../img/fleche_gauche.png\"></a>
                 {% endif %}
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/\"><img width='50px' heigh='50px' src=\"../../../img/home.png\"></a>
-                {% if user.id + 1 < pagination.max %}
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/user/{{user.id + 1}}\"><img width='50px' heigh='50px' src=\"../../../img/fleche_droite.png\"></a>
+                {% if user.numero + 1 < pagination.max %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/user/{{user.numero + 1}}\"><img width='50px' heigh='50px' src=\"../../../img/fleche_droite.png\"></a>
                 {% endif %}
             </h2>
 \t\t<br>

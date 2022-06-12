@@ -146,7 +146,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
                     echo "\">
 \t\t\t\t\t\t<a href=\"organigramme/user/";
                     // line 34
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 34), "html", null, true);
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "numero", [], "any", false, false, false, 34), "html", null, true);
                     echo "\">";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 34), "html", null, true);
                     echo "
@@ -244,7 +244,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 
 \t\t\t\t\t\t{{user.id}}
 \t\t\t\t\t\t<img width='40px' heigh='40px' src=\"../img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\">
-\t\t\t\t\t\t<a href=\"organigramme/user/{{user.id}}\">{{user.firstname}}
+\t\t\t\t\t\t<a href=\"organigramme/user/{{user.numero}}\">{{user.firstname}}
 \t\t\t\t\t\t{{user.lastname}}
 \t\t\t\t\t\t({{user.label}})</a>
 \t\t\t\t\t\t<br>

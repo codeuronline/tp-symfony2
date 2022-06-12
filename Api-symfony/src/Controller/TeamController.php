@@ -41,9 +41,11 @@ class TeamController extends AbstractController
         $users = $doctrine->getManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
         //$positions = $doctrine->getRepository(Position::class)->findAll();
         $user = [];
-
+        $numero=0;
         foreach ($users as $elementUser) {
             $aUser = [];
+           
+            $aUser['numero']=$numero; 
             $aUser['id'] = $elementUser->getId();
             $aUser['position'] = $elementUser->getPositions();
             $aUser['firstname'] = $elementUser->getFirstname();
@@ -70,6 +72,7 @@ class TeamController extends AbstractController
                         $aUser['label'] = $aLabel->getLabel();
                     }
                 }
+                $numero++;
                 $user[] = $aUser;
             }
         }
@@ -102,9 +105,10 @@ class TeamController extends AbstractController
 
 
         $full = [];
-
+        $numero=0;
         foreach ($users as $elementUser) {
             $afull = [];
+            $afull['numero']=$numero;
             $afull['id'] = $elementUser->getId();
             $afull['position'] = $elementUser->getPositions();
             $afull['firstname'] = $elementUser->getFirstname();
@@ -129,6 +133,7 @@ class TeamController extends AbstractController
                         $afull['label'] = $aLabel->getLabel();
                     }
                 }
+                $numero++;
                 $full[] = $afull;
             }
         }

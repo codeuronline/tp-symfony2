@@ -18,7 +18,7 @@
 	</style>
 
 	<div class="head">
-		<h1></h1>
+		<h1>{{user.id}}</h1>
 		<p>
             <h2>
                 <img width='100px' heigh='100px' src="../../../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}"> &nbsp;&nbsp;{{user.firstname}} {{user.lastname}}({{user.label}}) 
@@ -37,12 +37,12 @@
             
             <h2>
                
-                {% if user.id - 1 > pagination.min %}
-                    <a href="../../organigramme/user/{{user.id - 1}}"><img width='50px' heigh='50px' src="../../../img/fleche_gauche.png"></a>
+                {% if user.numero - 1 >= pagination.min %}
+                    <a href="../../organigramme/user/{{user.numero - 1}}"><img width='50px' heigh='50px' src="../../../img/fleche_gauche.png"></a>
                 {% endif %}
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href="../../organigramme/"><img width='50px' heigh='50px' src="../../../img/home.png"></a>
-                {% if user.id + 1 < pagination.max %}
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="../../organigramme/user/{{user.id + 1}}"><img width='50px' heigh='50px' src="../../../img/fleche_droite.png"></a>
+                {% if user.numero + 1 < pagination.max %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="../../organigramme/user/{{user.numero + 1}}"><img width='50px' heigh='50px' src="../../../img/fleche_droite.png"></a>
                 {% endif %}
             </h2>
 		<br>
