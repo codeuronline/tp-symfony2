@@ -98,7 +98,7 @@ class TeamController extends AbstractController
             for ($i=0; $i < count($hierarchie) ; $i++) { 
              if (($full[$j]["supHierarchique"]== $hierarchie[$i]) && in_array($full,$tri)){
                 echo "bob";
-             } else{$tri[$j]=$full;}
+             } else{$tri[$j]=$full[$j];}
             }    
         }
         echo count($tri);
