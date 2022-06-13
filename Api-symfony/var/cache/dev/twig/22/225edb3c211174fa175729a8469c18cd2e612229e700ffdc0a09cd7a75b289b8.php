@@ -96,14 +96,14 @@ class __TwigTemplate_12cf250b8100d47b798dba438346774823426c979dd44df926e52eb1f87
             echo "\t\t\t\t<h2>";
             echo twig_escape_filter($this->env, $context["aElement"], "html", null, true);
             echo "</h2>
-
 \t\t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['aElement'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 27
-        echo "
+        // line 26
+        echo "\t\t\t
+
 \t\t</p>
 
 \t</div>
@@ -125,7 +125,7 @@ class __TwigTemplate_12cf250b8100d47b798dba438346774823426c979dd44df926e52eb1f87
 
     public function getDebugInfo()
     {
-        return array (  106 => 27,  96 => 24,  92 => 23,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
+        return array (  105 => 26,  96 => 24,  92 => 23,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -154,8 +154,8 @@ class __TwigTemplate_12cf250b8100d47b798dba438346774823426c979dd44df926e52eb1f87
 \t\t<p>
 \t\t\t{% for aElement in element %}
 \t\t\t\t<h2>{{aElement}}</h2>
-
 \t\t\t{% endfor %}
+\t\t\t
 
 \t\t</p>
 

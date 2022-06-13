@@ -158,8 +158,9 @@ class TeamController extends AbstractController
                 
                 
             }
-            foreach ($order as $key => $value) {
-                $order[]= array_unshift($order, $t[$order]);
+            foreach ($order as $id=>$chaine) {
+                 array_unshift($chaine, $t[$chaine[0]]);
+                 $order[$id]=$chaine;
             }
             error_log("prf : " . $prf);
             order($t, $leaves, $prf-1, $level, $order);
@@ -167,14 +168,21 @@ class TeamController extends AbstractController
 
         $order=[];
         order($t,$leaves,max($level),$level,$order);
+        var_dump($order);
+        $result=[];
+        foreach($order as $ordre){
+            $result=array_merge($result,$ordre);
+        }
+        $result =array_unique($result);
+        var_dump($result);
         
         return $this->render(
             'team/recursive.html.twig',
             [
-                'element'   => $element,
+                'element'   => $result,
                 't'         => $t,
 
-                'ordre'     => $order,
+                'ordre'     => $result,
             ]
         );
         //Envoie la vue sur la page twig
