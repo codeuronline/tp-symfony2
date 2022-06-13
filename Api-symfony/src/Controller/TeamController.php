@@ -114,9 +114,16 @@ class TeamController extends AbstractController
             'D' => 'B',
             'E' => 'B'
         ];
+        var_dump("element:", $element, "T => Hiearchie:", $t);
         function profondeur($t,$element,$crw,&$level) {
-            if($t[$element]==null){
-                $level[$element]=0;
+
+            error_log("elem : " . $element . " crw : " . $crw . " " . print_r($level, 1));
+
+            if ($t[$crw] == null) {
+                $level[$crw] = 0;
+
+                error_log("exit");
+                
                 return 0;
             } 
             if (!isset($level[$element])) {
@@ -126,21 +133,52 @@ class TeamController extends AbstractController
             }
             profondeur($t,$element,$t[$crw],$level);
         };
+        $level = [];
         foreach ($t as $id => $data) {
             profondeur($t,$id,$id,$level);
         }
         $keys=array_keys($t);
         $values=array_values($t);
-        $leaves= array_diff($keys,$values);
+        $leaves = array_diff($keys, $values);
+        var_dump("level : ", $level);
+        var_dump("-----------------");
+        var_dump("leaves:", array_diff($keys, $values));
+        var_dump("-----------------");
 
+        function order($t, $leaves, $prf, $level, &$order)
+        {
+            if ($prf == 0) {
+                return;
+            }
+            foreach ($leaves as $leaf) {
+                if ($level[$leaf] == $prf) {
+                    $order[] = [$leaf];
+                    
+                }
+                
+                
+            }
+            foreach ($order as $key => $value) {
+                $order[]= array_unshift($order, $t[$order]);
+            }
+            error_log("prf : " . $prf);
+            order($t, $leaves, $prf-1, $level, $order);
+        }
+
+        $order=[];
+        order($t,$leaves,max($level),$level,$order);
+        
         return $this->render(
             'team/recursive.html.twig',
             [
-                'element' => $element,
+                'element'   => $element,
+                't'         => $t,
+
+                'ordre'     => $order,
             ]
         );
         //Envoie la vue sur la page twig
-
+        
 
     }  
     /**
