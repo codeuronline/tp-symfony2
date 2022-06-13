@@ -7,6 +7,7 @@ return [
     'app_default_organigramme' => [[], ['_controller' => 'App\\Controller\\DefaultController::organigramme'], [], [['text', '/default/organigramme']], [], [], []],
     'app_team' => [[], ['_controller' => 'App\\Controller\\TeamController::index'], [], [['text', '/team']], [], [], []],
     'app_team_organigramme_user/{id}' => [['id'], ['_controller' => 'App\\Controller\\TeamController::user'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/team/organigramme/user']], [], [], []],
+    'app_team_recursive' => [[], ['_controller' => 'App\\Controller\\TeamController::recursive'], [], [['text', '/team/recursive']], [], [], []],
     'app_team_organigramme' => [[], ['_controller' => 'App\\Controller\\TeamController::organigramme'], [], [['text', '/team/organigramme']], [], [], []],
     'api_entrypoint' => [['index', '_format'], ['_controller' => 'api_platform.action.entrypoint', '_format' => '', '_api_respond' => 'true', 'index' => 'index'], ['index' => 'index'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', 'index', 'index', true], ['text', '/api']], [], [], []],
     'api_doc' => [['_format'], ['_controller' => 'api_platform.action.documentation', '_format' => '', '_api_respond' => 'true'], [], [['variable', '.', '[^/]++', '_format', true], ['text', '/api/docs']], [], [], []],

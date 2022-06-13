@@ -100,7 +100,49 @@ class TeamController extends AbstractController
             ]
         );
     }
+    /**
+     * @Route("/team/recursive", name="app_team_recursive")
+     */
 
+    public function recursive(ManagerRegistry $doctrine)
+    {
+        $element = ['A', 'B', 'C', 'D', 'E'];
+        $t = [
+            'A' => null,
+            'B' => 'A',
+            'C' => 'A',
+            'D' => 'B',
+            'E' => 'B'
+        ];
+        function profondeur($t,$element,$crw,&$level) {
+            if($t[$element]==null){
+                $level[$element]=0;
+                return 0;
+            } 
+            if (!isset($level[$element])) {
+                $level[$element]=1;
+            }else{
+                $level[$element]++;
+            }
+            profondeur($t,$element,$t[$crw],$level);
+        };
+        foreach ($t as $id => $data) {
+            profondeur($t,$id,$id,$level);
+        }
+        $keys=array_keys($t);
+        $values=array_values($t);
+        $leaves= array_diff($keys,$values);
+
+        return $this->render(
+            'team/recursive.html.twig',
+            [
+                'element' => $element,
+            ]
+        );
+        //Envoie la vue sur la page twig
+
+
+    }  
     /**
      * @Route("/team/organigramme", name="app_team_organigramme")
      */
@@ -118,49 +160,19 @@ class TeamController extends AbstractController
         $hierarchie = array_values(array_unique($hierarchie));
         $theUsers = $full;
         $newUsers = [];
-        for ($i = 0; $i < count($hierarchie); $i++) {
-            for ($j = 0; $j < count($theUsers); $j++) {
-                if (!(in_array($theUsers[$j], $newUsers))) {
-                    // si l'utilisateur n'est pas dans le tableau
-                    if ($theUsers[$j]['supHierarchie'] == $hierarchie[$i]) {
-                        // on intitlise la position
-                        $position=0;
-                        while (($position <count($newUsers))||($newUsers[$position]['firstname'].' '.$newUsers['lastname']!==$hierarchie[$i]))
-                        {
-                            $position++;
-                        } 
-                        if (isset($newUsers[$position])){
-                            $max= count($newUsers);
-                            $pre=[];
-                            $last=[];
-                            //Pre tableau 
-                            for ($index=0;$index<$position;$index++ ){
-                               $pre[]=$newUsers[$index];
-                                
-                            }
-                            for ($index=$position+1;$index<$max;$index++){
-                                $next[]=$newUsers[$index];
-                            }
-                            // 
-                            $newUsers[]=array_merge($pre,$theUsers[$j],$next);
-                            
-                            //tableau 2 l'apres
-                            // puis on merge les 3 tableaux
-                        } else { 
-                            $newUsers[]=$theUsers[$j];
-                        }
-                        $theUsers= array_shift($theUsers);
-                    }
-                }
-                }
-        }
+        var_dump($theUsers);
+        /**
+         * test une nouvelle fonctions
+         * 
+         */
+        
         $filterUsers = $full;
         var_dump($hierarchie);
         return $this->render(
             'team/organigramme.html.twig',
             // compact('users', 'filterUsers', 'hierarchie', 'tri')
             [
-                'users' => $full, //$tri[7],
+                'users' => $newUsers, //$tri[7],
                 // "filterUsers" => $full,
                 'hierarchie' => $hierarchie
             

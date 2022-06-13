@@ -11,6 +11,7 @@ return [
         '/default' => [[['_route' => 'app_default', '_controller' => 'App\\Controller\\DefaultController::index'], null, null, null, false, false, null]],
         '/default/organigramme' => [[['_route' => 'app_default_organigramme', '_controller' => 'App\\Controller\\DefaultController::organigramme'], null, null, null, false, false, null]],
         '/team' => [[['_route' => 'app_team', '_controller' => 'App\\Controller\\TeamController::index'], null, null, null, false, false, null]],
+        '/team/recursive' => [[['_route' => 'app_team_recursive', '_controller' => 'App\\Controller\\TeamController::recursive'], null, null, null, false, false, null]],
         '/team/organigramme' => [[['_route' => 'app_team_organigramme', '_controller' => 'App\\Controller\\TeamController::organigramme'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'team', '_controller' => 'App\\Controller\\TeamController::organigramme'], null, ['GET' => 0, 'HEAD' => 1], null, false, false, null]],
     ],
