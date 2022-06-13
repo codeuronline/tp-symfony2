@@ -76,6 +76,7 @@ class TeamController extends AbstractController
             }
             $numero++;
         }
+        
         return $full;
     }
 
@@ -93,33 +94,45 @@ class TeamController extends AbstractController
         $pagination['self'] = $user[$id]['id'];
         return $this->render(
             'team/user.html.twig',
-            // compact('users', 'filterUsers', 'hierarchie', 'tri')
-            [
+                   [
                 'user' => $user[$id],
                 'pagination' => $pagination
             ]
         );
     }
+   public function construcHiearchic(ManagerRegistry $doctrine,$users){
+    foreach ($users as $user) {
+        if (empty($user["supHiearchique"])){
+            $table[$user]= null;
+            }
+
+        if($user["supHiearchique"]){
+            
+        }
+   }
+   }
+   
+   
     /**
      * @Route("/team/recursive", name="app_team_recursive")
      */
 
-    public function recursive(ManagerRegistry $doctrine)
+    public function recursive(ManagerRegistry $doctrine,$element,$tableSupervisor)
     {
-        $element = ['A', 'B', 'C', 'D', 'E'];
-        $t = [
-            'A' => null,
-            'B' => 'A',
-            'C' => 'A',
-            'D' => 'B',
-            'E' => 'B'
-        ];
-        var_dump("element:", $element, "T => Hiearchie:", $t);
-        function profondeur($t,$element,$crw,&$level) {
+        // $element = ['A', 'B', 'C', 'D', 'E'];
+        // $t = [
+        //     'A' => null,
+        //     'B' => 'A',
+        //     'C' => 'A',
+        //     'D' => 'B',
+        //     'E' => 'B'
+        // ];
+        var_dump("element:", $element, "T => Hiearchie:", $tableSupervisor);
+        function profondeur($tableSupervisor,$element,$crw,&$level) {
 
             error_log("elem : " . $element . " crw : " . $crw . " " . print_r($level, 1));
 
-            if ($t[$crw] == null) {
+            if ($tableSupervisor[$crw] == null) {
                 $level[$crw] = 0;
 
                 error_log("exit");
@@ -131,21 +144,21 @@ class TeamController extends AbstractController
             }else{
                 $level[$element]++;
             }
-            profondeur($t,$element,$t[$crw],$level);
+            profondeur($tableSupervisor,$element,$tableSupervisor[$crw],$level);
         };
         $level = [];
-        foreach ($t as $id => $data) {
-            profondeur($t,$id,$id,$level);
+        foreach ($tableSupervisor as $id => $data) {
+            profondeur($tableSupervisor,$id,$id,$level);
         }
-        $keys=array_keys($t);
-        $values=array_values($t);
+        $keys=array_keys($tableSupervisor);
+        $values=array_values($tableSupervisor);
         $leaves = array_diff($keys, $values);
         var_dump("level : ", $level);
         var_dump("-----------------");
         var_dump("leaves:", array_diff($keys, $values));
         var_dump("-----------------");
 
-        function order($t, $leaves, $prf, $level, &$order)
+        function order($tableSupervisor, $leaves, $prf, $level, &$order)
         {
             if ($prf == 0) {
                 return;
@@ -159,15 +172,15 @@ class TeamController extends AbstractController
                 
             }
             foreach ($order as $id=>$chaine) {
-                 array_unshift($chaine, $t[$chaine[0]]);
+                 array_unshift($chaine, $tableSupervisor[$chaine[0]]);
                  $order[$id]=$chaine;
             }
             error_log("prf : " . $prf);
-            order($t, $leaves, $prf-1, $level, $order);
+            order($tableSupervisor, $leaves, $prf-1, $level, $order);
         }
 
         $order=[];
-        order($t,$leaves,max($level),$level,$order);
+        order($tableSupervisor,$leaves,max($level),$level,$order);
         var_dump($order);
         $result=[];
         foreach($order as $ordre){
@@ -175,17 +188,17 @@ class TeamController extends AbstractController
         }
         $result =array_unique($result);
         var_dump($result);
-        
-        return $this->render(
-            'team/recursive.html.twig',
-            [
-                'element'   => $result,
-                't'         => $t,
+        return $result;
+        // return $this->render(
+        //     'team/recursive.html.twig',
+        //     [
+        //         'element'   => $result,
+        //         't'         => $t,
 
-                'ordre'     => $result,
-            ]
-        );
-        //Envoie la vue sur la page twig
+        //         'ordre'     => $result,
+        //     ]
+        // );
+    // Envoie la vue sur la page twig
         
 
     }  
@@ -204,8 +217,8 @@ class TeamController extends AbstractController
             $hierarchie[] = $table["supHierarchique"];
         }
         $hierarchie = array_values(array_unique($hierarchie));
-        $theUsers = $full;
-        
+        $full = $this->recursive($doctrine,$full,$hierarchie);
+    
                 
         $filterUsers = $full;
         var_dump($hierarchie);
