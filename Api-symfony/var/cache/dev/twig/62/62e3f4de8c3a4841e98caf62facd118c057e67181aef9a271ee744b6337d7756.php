@@ -144,8 +144,10 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
                     echo " ";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 33), "html", null, true);
                     echo "\">
-\t\t\t\t\t\t";
+\t\t\t\t\t\t<a href=\"organigramme/user/";
                     // line 34
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "numero", [], "any", false, false, false, 34), "html", null, true);
+                    echo "\">";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 34), "html", null, true);
                     echo "
 \t\t\t\t\t\t";
@@ -155,7 +157,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t\t\t\t\t\t(";
                     // line 36
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "label", [], "any", false, false, false, 36), "html", null, true);
-                    echo ")
+                    echo ")</a>
 \t\t\t\t\t\t<br>
 
 \t\t\t\t\t";
@@ -204,7 +206,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 
     public function getDebugInfo()
     {
-        return array (  185 => 43,  178 => 41,  164 => 40,  157 => 36,  153 => 35,  149 => 34,  141 => 33,  137 => 32,  134 => 31,  127 => 29,  122 => 28,  120 => 27,  117 => 26,  114 => 25,  96 => 24,  92 => 23,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
+        return array (  187 => 43,  180 => 41,  166 => 40,  159 => 36,  155 => 35,  149 => 34,  141 => 33,  137 => 32,  134 => 31,  127 => 29,  122 => 28,  120 => 27,  117 => 26,  114 => 25,  96 => 24,  92 => 23,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -242,9 +244,9 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 
 \t\t\t\t\t\t{{user.id}}
 \t\t\t\t\t\t<img width='40px' heigh='40px' src=\"../img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\">
-\t\t\t\t\t\t{{user.firstname}}
+\t\t\t\t\t\t<a href=\"organigramme/user/{{user.numero}}\">{{user.firstname}}
 \t\t\t\t\t\t{{user.lastname}}
-\t\t\t\t\t\t({{user.label}})
+\t\t\t\t\t\t({{user.label}})</a>
 \t\t\t\t\t\t<br>
 
 \t\t\t\t\t{% endif %}

@@ -31,9 +31,9 @@
 
 						{{user.id}}
 						<img width='40px' heigh='40px' src="../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}">
-						{{user.firstname}}
+						<a href="organigramme/user/{{user.numero}}">{{user.firstname}}
 						{{user.lastname}}
-						({{user.label}})
+						({{user.label}})</a>
 						<br>
 
 					{% endif %}

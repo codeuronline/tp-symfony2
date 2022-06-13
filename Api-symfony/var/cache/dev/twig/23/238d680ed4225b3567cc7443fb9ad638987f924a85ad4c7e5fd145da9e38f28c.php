@@ -83,6 +83,12 @@ class __TwigTemplate_c6a23be4f768018f6c324e463d673a76025b8a7eb8fbe98b7e36e19bd21
         // line 20
         echo twig_escape_filter($this->env, (isset($context["message"]) || array_key_exists("message", $context) ? $context["message"] : (function () { throw new RuntimeError('Variable "message" does not exist.', 20, $this->source); })()), "html", null, true);
         echo "</p>
+    <li>
+        <a href=\"api/teams\" alt>Lien vers l'api</a>
+    </li>
+    <li>
+        <a href=\"team/organigramme\" alt>Lien vers l'organigramme</a>
+    </li>
 
 </div>
 ";
@@ -128,6 +134,12 @@ class __TwigTemplate_c6a23be4f768018f6c324e463d673a76025b8a7eb8fbe98b7e36e19bd21
     </ul> #}
 <h1>Accueil</h1>
 <p>{{message}}</p>
+    <li>
+        <a href=\"api/teams\" alt>Lien vers l'api</a>
+    </li>
+    <li>
+        <a href=\"team/organigramme\" alt>Lien vers l'organigramme</a>
+    </li>
 
 </div>
 {% endblock %}
