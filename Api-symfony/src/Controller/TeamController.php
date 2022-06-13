@@ -116,62 +116,46 @@ class TeamController extends AbstractController
             $hierarchie[] = $table["supHierarchique"];
         }
         $hierarchie = array_values(array_unique($hierarchie));
-        // nouveau tableau de tri
-
-
-        //echo count($newtable) . "&nbsp;&nbsp;";
-
-        //solution de tri via array_multisort
-        // foreach ($full as $keys => $value) {
-        //     $marks[$keys] = $value["supHierarchique"];
-        // }
-        // foreach ($full as $keys1 => $value1) {
-        //     $mark1[$keys1] = $value1["id"];
-        // }
-
-
-
-
-        /*for ($j=0;$j<count($full);$j) {
-            for ($i=0; $i < count($hierarchie) ; $i++) { 
-             if (($full[$j]["supHierarchique"]== $hierarchie[$i]) && in_array($full,$tri)){
-                echo "bob";
-             } else{$tri[$j]=$full[$j];}
-            }    
+        $theUsers = $full;
+        $newUsers = [];
+        for ($i = 0; $i < count($hierarchie); $i++) {
+            for ($j = 0; $j < count($theUsers); $j++) {
+                if (!(in_array($theUsers[$j], $newUsers))) {
+                    // si l'utilisateur n'est pas dans le tableau
+                    if ($theUsers[$j]['supHierarchie'] == $hierarchie[$i]) {
+                        // on intitlise la position
+                        $position=0;
+                        while (($position <count($newUsers))||($newUsers[$position]['firstname'].' '.$newUsers['lastname']!==$hierarchie[$i]))
+                        {
+                            $position++;
+                        } 
+                        if (isset($newUsers[$position])){
+                            $max= count($newUsers);
+                            $pre=[];
+                            $last=[];
+                            //Pre tableau 
+                            for ($index=0;$index<$position;$index++ ){
+                               $pre[]=$newUsers[$index];
+                                
+                            }
+                            for ($index=$position+1;$index<$max;$index++){
+                                $next[]=$newUsers[$index];
+                            }
+                            // 
+                            $newUsers[]=array_merge($pre,$theUsers[$j],$next);
+                            
+                            //tableau 2 l'apres
+                            // puis on merge les 3 tableaux
+                        } else { 
+                            $newUsers[]=$theUsers[$j];
+                        }
+                        $theUsers= array_shift($theUsers);
+                    }
+                }
+                }
         }
-        echo count($tri);
-        var_dump($tri);*/
-        /**  
-         * function de tri 
-         */
-        // function tri($hierarchie, $listemembre, $profondeur, $compteur)
-        // {
-
-        //     $compteur++;
-        //     for ($i = 0; $i < $profondeur; $i++) {
-        //         error_log("profond : " . $profondeur);
-        //         foreach ($listemembre as $member) {
-        //             error_log("member :" . print_r($member['lastname'], 1));
-
-        //             if ($member["supHierarchique"] = $hierarchie[$i]) {
-        //                 // var_dump('noeud');
-
-        //                 $trifinal[] = tri($hierarchie, $listemembre, $profondeur - 1, $compteur);
-        //             } else {
-        //                 // var_dump('feuille');
-        //                 $trifinal[$i] = $member;
-        //             }
-        //         }
-
-        //         return $trifinal;
-        //     }
-        // }
-        // $users = $full;
-
-        // $p = count($hierarchie);
-
-        // $tri = tri($hierarchie, $full, 3, 0);
-        $filterUsers = $full;var_dump($hierarchie);
+        $filterUsers = $full;
+        var_dump($hierarchie);
         return $this->render(
             'team/organigramme.html.twig',
             // compact('users', 'filterUsers', 'hierarchie', 'tri')

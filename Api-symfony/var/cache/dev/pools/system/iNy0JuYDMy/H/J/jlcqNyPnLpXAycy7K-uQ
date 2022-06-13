@@ -1,7 +1,3 @@
 <?php //%5BC%5DApp%255CController%255CTeamController%2523findassuperiorHierarchic
 
-<<<<<<< HEAD
-return [PHP_INT_MAX, 1654872992];
-=======
-return [PHP_INT_MAX, 1655032154];
->>>>>>> c59cb1209a470c02d409494483562cfab9dff462
+return [PHP_INT_MAX, 1655106176];
