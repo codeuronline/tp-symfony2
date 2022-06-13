@@ -159,20 +159,15 @@ class TeamController extends AbstractController
         }
         $hierarchie = array_values(array_unique($hierarchie));
         $theUsers = $full;
-        $newUsers = [];
-        var_dump($theUsers);
-        /**
-         * test une nouvelle fonctions
-         * 
-         */
         
+                
         $filterUsers = $full;
         var_dump($hierarchie);
         return $this->render(
             'team/organigramme.html.twig',
             // compact('users', 'filterUsers', 'hierarchie', 'tri')
             [
-                'users' => $newUsers, //$tri[7],
+                'users' => $full, //$tri[7],
                 // "filterUsers" => $full,
                 'hierarchie' => $hierarchie
             
