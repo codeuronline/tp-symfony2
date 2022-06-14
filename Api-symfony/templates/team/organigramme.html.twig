@@ -26,7 +26,6 @@
 					{% set flag = true %}
 						{% for place in hierarchie %}
 							{% set i = loop.index %}
-			
 							{% if (user.supHierarchique == place) and (flag == true) %}
 								{% set flag = false %}
 								{% for j in 1.. i %}
