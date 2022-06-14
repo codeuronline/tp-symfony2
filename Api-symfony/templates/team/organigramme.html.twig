@@ -21,18 +21,16 @@
 		<h1>Organigramme de l'équipe</h1>
 		<p>
 			{% for userOrder in order %}
-			{% set flagUser = true %}
 				{% for user in users %}
 					{% if userOrder == user.key %}
 					{% set flag = true %}
 						{% for place in hierarchie %}
 							{% set i = loop.index %}
-							{% if (user.supHierarchique == place) and (flag == true) and flagUser == true %}
+			
+							{% if (user.supHierarchique == place) and (flag == true) %}
 								{% set flag = false %}
-								|
 								{% for j in 1.. i %}
-									{# &nbsp; &nbsp; #}
-									--
+									&nbsp; &nbsp;
 								{% endfor %}
 								{{user.id}}
 								<img width='40px' heigh='40px' src="../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}">
@@ -40,7 +38,6 @@
 									{{user.lastname}}
 									({{user.label}})</a>
 									<br>
-									{% set flagUser = false %}
 							{% endif %}
 						{% endfor %}
 					{% endif %}
