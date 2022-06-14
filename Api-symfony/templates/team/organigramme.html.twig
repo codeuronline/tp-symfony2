@@ -23,9 +23,14 @@
 			{% for userOrder in order %}
 				{% for place in hierarchie %}
 					{% set i = loop.index %}
+					{% set flag = true %}
+ 					{{ place }}	<br>
 					{% for user in users %}
+
 						{% if userOrder == user.key %}
-							{% if user.supHierarchique == place %}
+						
+							{% if (user.supHierarchique == place) and (flag == true) %}
+							{% set flag = false %}
 								{% for j in 1.. i %}
 									&nbsp; &nbsp;
 								{% endfor %}
