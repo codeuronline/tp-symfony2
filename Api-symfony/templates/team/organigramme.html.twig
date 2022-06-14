@@ -20,23 +20,24 @@
 	<div class="example-wrapper">
 		<h1>Organigramme de l'équipe</h1>
 		<p>
-			{% for user in users %}
+			{% for userOrder in order %}
 				{% for place in hierarchie %}
 					{% set i = loop.index %}
-
-					{% if user.supHierarchique == place %}
-						{% for j in 1.. i %}
-							&nbsp; &nbsp;
-						{% endfor %}
-
-						{{user.id}}
-						<img width='40px' heigh='40px' src="../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}">
-						<a href="organigramme/user/{{user.numero}}">{{user.firstname}}
-						{{user.lastname}}
-						({{user.label}})</a>
-						<br>
-
-					{% endif %}
+					{% for user in users %}
+						{% if userOrder == user.key %}
+							{% if user.supHierarchique == place %}
+								{% for j in 1.. i %}
+									&nbsp; &nbsp;
+								{% endfor %}
+								{{user.id}}
+								<img width='40px' heigh='40px' src="../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}">
+								<a href="organigramme/user/{{user.numero}}">{{user.firstname}}
+									{{user.lastname}}
+									({{user.label}})</a>
+								<br>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
 				{% endfor %}
 
 			{% endfor %}
