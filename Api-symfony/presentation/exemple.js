@@ -161,9 +161,9 @@ console.log([...sequence("abc", oneDigitPrimes())]); // =>["a","b","c",2,3,5,7]
 
 // la méthode array foreach() est souvent un moyen élégant de boucler sur les éléments d'un tableau,
 //  vous pourriez donc être tenté d'écrire la fonction sequence() comme celle-ci
-function* sequence(...iterables) {
-    iterables.forEach(iterable => yield* iterable) // error    
-}
+// function* sequence(...iterables) {
+//     iterables.forEach(iterable => yield* iterable) // error    
+// }
 // cela ne marche pas , cepenant les methode yield et yield* ne peuvent utliser que dans une
 // fonction génératrice, mais la fonction de flèche imbriquée dans ce code est une fonction
 // régulière, pas la function* donc la valeur n'est pas retourné
@@ -187,5 +187,54 @@ function* oneAndDone() {
     yield 1;
     return "done";
 }
+// la valeur de retour n'apparaît pas à l'itération normale
+[...oneAndDone()] // => 1
+// mais il est disponible si vous appelez explicitement next()
+let generator = oneAndDone();
+generator.next()                // => {value :1, done:false}
+generator.next()                // => {value: done,done:true}
+// si le generateur est deja done , le retour de la value n'est pas a nouveau retourné
+generator.next()                // =>{value: undefined,done: true}
 
-[...oneAndDone()] // =>1
+
+// nous avons traité le yield comme une déclaration indiquant qu'une value mais elle n'a pas de value propre
+// en fait, cependant le yield est une expression et il peut avoir une value
+// quand la methode next() d'un generateur est invoquée, la fonction generatrice s'execute tant qu'elle n'a
+// pas atteint l'expression yield. L'expression qui suit le mot clé Yield est evalué et la value  devient la valeur
+// retour de next() invoqué. A ce point, la fonction de génératrice arrête de s'exécuter à droite du générateur
+// au milieu de l'évaluation de l'expression de Yield. la prochaine fois que le methode next() est appelé ,
+// l'argument passe à  next() devient  la value de l'expression Yield  qui etait en pause. alors le generateur
+// renvoie des valeurs à son appelant avec Yield, et l'appelant passe les valeur  dans le generateur avec next()
+// le générateur et l'appelant sont deux flux distincts d'exécution passant des valeurs (et un contrôle) dans les deux sens
+
+function* smallNumbers() {
+    console.log("next() invoqué la premiere fois; argument rejeté");
+    let y1 = yield 1;       // y1 == b
+    console.log("next() invoqué une seconde fois avec l'argument", y1);
+    let y2 = yield 2;       // y2 == c
+    console.log("next() invoqué une 3ieme fois avec l'argument", y2);
+    let y3 = yield 3;       // y3 == d
+    console.log("next() invoqué une 4ieme fois avec l'argument", y3);
+    return 4;
+}
+let g = smallNumbers();
+console.log("generateur créé: aucun code encore exécuté");
+let n1 = g.next("a");   // n1.value == 1
+console.log("generateur yieled", n1.value);
+let n2 = g.next("b");   // n2.value == 2
+console.log("generateur yieled", n2.value);
+let n3 = g.next("c");   // n3.value == 3
+console.log("generateur yieled", n3.value);
+let n4 = g.next("d");   // n4.value == {value: 4 ,done: true}
+console.log("generateur return", n4.value);
+
+// lorsque ce code s'exécute, ses produits produisent la sortie suivante
+// qui montre les allers - retours entre les deux blocs de code
+// voir le resultat
+
+
+// en plus de fournir une entrée à un générateur avec next(), vous pouvez également modifier
+// le flux de contrôle à l'intérieur du générateur en appelant ses méthodes return() et throw().
+// value ou throw exception comme si la prochaine instruction du générateur était un retour ou un throw
+// return() stop l'execution
+// throw() renvoie un signal arbitraire sous la forme d'une exception 
