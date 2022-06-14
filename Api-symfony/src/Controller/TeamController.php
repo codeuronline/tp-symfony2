@@ -225,9 +225,9 @@ class TeamController extends AbstractController
         $order = $this->recursive($doctrine,$full,$hierarchie);
     
                 
-        $filterUsers = $full;
-        var_dump("hiearchie",$hierarchie);
-        var_dump('order',array_values($order));
+        // $filterUsers = $full;
+        // var_dump("hiearchie",$hierarchie);
+        // var_dump('order',array_values($order));
         return $this->render(
             'team/organigramme.html.twig',
             // compact('users', 'filterUsers', 'hierarchie', 'tri')
