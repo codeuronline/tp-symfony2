@@ -21,16 +21,14 @@
 		<h1>Organigramme de l'équipe</h1>
 		<p>
 			{% for userOrder in order %}
-				{% for place in hierarchie %}
-					{% set i = loop.index %}
+			{% set flagUser = true %}
+				{% for user in users %}
+					{% if userOrder == user.key %}
 					{% set flag = true %}
- 					{{ place }}	<br>
-					{% for user in users %}
-
-						{% if userOrder == user.key %}
-						
-							{% if (user.supHierarchique == place) and (flag == true) %}
-							{% set flag = false %}
+						{% for place in hierarchie %}
+							{% set i = loop.index %}
+							{% if (user.supHierarchique == place) and (flag == true) and flagUser == true %}
+								{% set flag = false %}
 								{% for j in 1.. i %}
 									&nbsp; &nbsp;
 								{% endfor %}
@@ -39,12 +37,12 @@
 								<a href="organigramme/user/{{user.numero}}">{{user.firstname}}
 									{{user.lastname}}
 									({{user.label}})</a>
-								<br>
+									<br>
+									{% set flagUser = false %}
 							{% endif %}
-						{% endif %}
-					{% endfor %}
+						{% endfor %}
+					{% endif %}
 				{% endfor %}
-
 			{% endfor %}
 
 		</p>
