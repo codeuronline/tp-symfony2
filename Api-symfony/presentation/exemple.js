@@ -164,8 +164,8 @@ console.log([...sequence("abc", oneDigitPrimes())]); // =>["a","b","c",2,3,5,7]
 // function* sequence(...iterables) {
 //     iterables.forEach(iterable => yield* iterable) // error    
 // }
-// cela ne marche pas , cepenant les methode yield et yield* ne peuvent utliser que dans une
-// fonction génératrice, mais la fonction de flèche imbriquée dans ce code est une fonction
+// cela ne marche pas , cependant les methode yield et yield* ne peuvent etre utlisees que dans une
+// fonction génératrice, mais la fonction lèchée imbriquée dans ce code est une fonction
 // régulière, pas la function* donc la valeur n'est pas retourné
 
 // l'utilisation la plus courante des fonctions génératrices consiste à créer des itérateurs
