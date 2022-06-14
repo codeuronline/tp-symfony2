@@ -29,8 +29,10 @@
 							{% set i = loop.index %}
 							{% if (user.supHierarchique == place) and (flag == true) and flagUser == true %}
 								{% set flag = false %}
+								|
 								{% for j in 1.. i %}
-									&nbsp; &nbsp;
+									{# &nbsp; &nbsp; #}
+									--
 								{% endfor %}
 								{{user.id}}
 								<img width='40px' heigh='40px' src="../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}">
