@@ -116,11 +116,11 @@ class TeamController extends AbstractController
                 $table[$user["key"]] = null;
             } else {
                 $table[$user["key"]] = $user["supHierarchique"];
-                ;
+    
             }
             
     }
-    // var_dump($table);
+     var_dump($table);
     // retourne la structure hierarchique
     return $table;
    }
@@ -133,10 +133,7 @@ class TeamController extends AbstractController
 
     public function recursive(ManagerRegistry $doctrine,$element,$tableSupervisor)
     {
-        //
-        
-        // $element=$this->getAllTeam($doctrine);
-        
+
         // var_dump("element:", $element, "T => Hiearchie:", $tableSupervisor);
         // genere un tabeau $level des profondeurs à partir des $element selon $tableSupervisor
         function profondeur($tableSupervisor,$element,$crw,&$level) {
@@ -228,7 +225,6 @@ class TeamController extends AbstractController
         
         // on recupere tous les membres de l'organisation
         $full = $this->getAllTeam($doctrine);
-        
         // on recupère l'organistion hierarchique  
         $hierarchie = $this->construcHiearchic($doctrine,$full);
         
