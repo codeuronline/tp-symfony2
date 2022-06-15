@@ -201,6 +201,7 @@ class TeamController extends AbstractController
         }
         $result =array_unique($result);
            return $result;
+           
         // commnenter le return precedent et decommenter la suite pour avoir une vue
         // dans twig a l'adresse team/recursive
         // return $this->render(
@@ -237,7 +238,7 @@ class TeamController extends AbstractController
         return $this->render(
             'team/organigramme.html.twig',
             [
-                'users' => $full, //$tri[7],
+                'users' => $full, 
                 'order' => $order,
                 'hierarchie' => $hierarchie
             
