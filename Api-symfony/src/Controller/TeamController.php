@@ -21,6 +21,7 @@ class TeamController extends AbstractController
     }
     /**
      * @Route("/team", name="app_team")
+     * affiche la vue de index
      */
     public function index(): Response
     {
@@ -29,7 +30,9 @@ class TeamController extends AbstractController
         ]);
     }
 
-    //obtenir l'ensemble des membres de l'entreprise
+    // Renvoie un Tableau de la Team 
+    // si $id est defini Renvoie un utilisateur particulier
+    
     public function getAllTeam(ManagerRegistry $doctrine,$id=null): array
     {
         $users = $doctrine->getManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
@@ -39,9 +42,7 @@ class TeamController extends AbstractController
             $afull = [];
 
             $afull['numero'] = $numero;
-
             $afull['id'] = $elementUser->getId();
-
             $afull['firstname'] = $elementUser->getFirstname();
             $afull['lastname'] = $elementUser->getLastname();
             $afull['key'] = $elementUser->getFirstname() . " " . $elementUser->getLastname();
@@ -83,7 +84,7 @@ class TeamController extends AbstractController
 
     /**
      * @Route("/team/organigramme/user/{id}", name="app_team_organigramme_user/{id}")
-     *  
+     * Affiche l'utilisateur $id dans la vue
      */
 
     public function user(ManagerRegistry $doctrine, $id)
@@ -102,6 +103,7 @@ class TeamController extends AbstractController
             ]
         );
     }
+    
     /** methode construisant la structure hierarchique d'une organisation 
      *  à partir des $users
      *  et renvoyant un tableau $table des dépendances de cette structure
@@ -109,7 +111,6 @@ class TeamController extends AbstractController
 
     
    public function construcHiearchic(ManagerRegistry $doctrine,$users){
-   
     foreach ($users as $user) {
         if (empty($user["supHierarchique"])){
                 $table[$user["key"]] = null;
@@ -137,6 +138,7 @@ class TeamController extends AbstractController
         // $element=$this->getAllTeam($doctrine);
         
         // var_dump("element:", $element, "T => Hiearchie:", $tableSupervisor);
+        // genere un tabeau $level des profondeurs à partir des $element selon $tableSupervisor
         function profondeur($tableSupervisor,$element,$crw,&$level) {
 
             error_log("elem : " . $element . " crw : " . $crw . " " . print_r($level, 1));
@@ -156,17 +158,23 @@ class TeamController extends AbstractController
             profondeur($tableSupervisor,$element,$tableSupervisor[$crw],$level);
         };
         $level = [];
+        
         foreach ($tableSupervisor as $id => $data) {
             profondeur($tableSupervisor,$id,$id,$level);
         }
+        // recupere les clé du tableau hierarchique
         $keys=array_keys($tableSupervisor);
+        // recupere les valeurs du tableau hierarchique
         $values=array_values($tableSupervisor);
+        // recupere les feuilles qui est la difference des 2 tableaux
         $leaves = array_diff($keys, $values);
         // var_dump("level : ", $level);
         // var_dump("-----------------");
         // var_dump("leaves:", array_diff($keys, $values));
         // var_dump("-----------------");
-
+        
+        // genere un tableau $order organiser avec selon $tablesupervisor
+        // avec les feuilles $leave
         function order($tableSupervisor, $leaves, $prf, $level, &$order)
         {
             if ($prf == 0) {
@@ -196,7 +204,8 @@ class TeamController extends AbstractController
         }
         $result =array_unique($result);
            return $result;
-        // commnenter le return precedent et decommenter la suite pour avoir une vue du dans twig a l'adresse team/recurisive
+        // commnenter le return precedent et decommenter la suite pour avoir une vue
+        // dans twig a l'adresse team/recursive
         // return $this->render(
         //     'team/recursive.html.twig',
         //     [
@@ -215,7 +224,7 @@ class TeamController extends AbstractController
 
     public function organigramme(ManagerRegistry $doctrine)
     {
-        //organiser l'ensemble des membres suivant la hierarchie  de l'entrepise
+        // organiser l'ensemble des membres suivant la hierarchie  de l'entrepise
         
         // on recupere tous les membres de l'organisation
         $full = $this->getAllTeam($doctrine);
@@ -233,7 +242,6 @@ class TeamController extends AbstractController
             'team/organigramme.html.twig',
             [
                 'users' => $full, //$tri[7],
-                // "filterUsers" => $full,
                 'order' => $order,
                 'hierarchie' => $hierarchie
             

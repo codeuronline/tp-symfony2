@@ -105,76 +105,79 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
         echo " ";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 24, $this->source); })()), "lastname", [], "any", false, false, false, 24), "html", null, true);
         echo "
+                <a href=\"../../\" alt=\"retour\"> <img width='50px' heigh='50px' src=\"../../../img/home.png\" alt=\"image de mail\"></a>
             </h2>
             ";
-        // line 26
-        if ((0 !== twig_compare(twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 26, $this->source); })()), "supHierarchique", [], "any", false, false, false, 26), ""))) {
-            // line 27
+        // line 27
+        if ((0 !== twig_compare(twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 27, $this->source); })()), "supHierarchique", [], "any", false, false, false, 27), ""))) {
+            // line 28
             echo "            <h2>Supérieur Hierarchique : ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 27, $this->source); })()), "supHierarchique", [], "any", false, false, false, 27), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 28, $this->source); })()), "supHierarchique", [], "any", false, false, false, 28), "html", null, true);
             echo "</h2>
             ";
         }
-        // line 29
+        // line 30
         echo "                        <h2> Age : ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 29, $this->source); })()), "age", [], "any", false, false, false, 29), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 30, $this->source); })()), "age", [], "any", false, false, false, 30), "html", null, true);
         echo " ans</h2>
             <h2>
                 <img width='50px' heigh='50px' src=\"../../../img/pdf.png\" alt=\"image de cv\"><a href=\"/pdf/";
-        // line 31
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 31, $this->source); })()), "id", [], "any", false, false, false, 31), "html", null, true);
-        echo "/cv_";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 31, $this->source); })()), "lastname", [], "any", false, false, false, 31), "html", null, true);
-        echo ".pdf\" alt=\"cv de ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 31, $this->source); })()), "lastname", [], "any", false, false, false, 31), "html", null, true);
-        echo " ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 31, $this->source); })()), "firstname", [], "any", false, false, false, 31), "html", null, true);
-        echo "\"> Son CV</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <img width='50px' heigh='50px' src=\"../../../img/mail.png\" alt=\"image de mail\"><a href=\"mailto://";
         // line 32
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 32, $this->source); })()), "mail", [], "any", false, false, false, 32), "html", null, true);
-        echo "\" alt=\"mail de ";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 32, $this->source); })()), "id", [], "any", false, false, false, 32), "html", null, true);
+        echo "/cv_";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 32, $this->source); })()), "lastname", [], "any", false, false, false, 32), "html", null, true);
+        echo ".pdf\" alt=\"cv de ";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 32, $this->source); })()), "lastname", [], "any", false, false, false, 32), "html", null, true);
         echo " ";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 32, $this->source); })()), "firstname", [], "any", false, false, false, 32), "html", null, true);
+        echo "\"> Son CV</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <img width='50px' heigh='50px' src=\"../../../img/mail.png\" alt=\"image de mail\"><a href=\"mailto://";
+        // line 33
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 33, $this->source); })()), "mail", [], "any", false, false, false, 33), "html", null, true);
+        echo "\" alt=\"mail de ";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 33, $this->source); })()), "lastname", [], "any", false, false, false, 33), "html", null, true);
+        echo " ";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 33, $this->source); })()), "firstname", [], "any", false, false, false, 33), "html", null, true);
         echo "\"> Son mail </a>
             </h2>
             <h2>
                 <img width='50px' heigh='50px' src=\"../../../img/tel.png\" alt=\"image de tel\"> Son téléphone : ";
-        // line 35
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 35, $this->source); })()), "tel", [], "any", false, false, false, 35), "html", null, true);
+        // line 36
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 36, $this->source); })()), "tel", [], "any", false, false, false, 36), "html", null, true);
         echo "</h2>
             </h2>
             <h2>
                 <img width='50px' heigh='50px' src=\"../../../img/adresse.png\" alt=\"image d'adresse\"> Son adresse : ";
-        // line 38
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 38, $this->source); })()), "adresse", [], "any", false, false, false, 38), "html", null, true);
+        // line 39
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 39, $this->source); })()), "adresse", [], "any", false, false, false, 39), "html", null, true);
         echo "
                 </h2>            
             
             <h2>
-               
-                ";
-        // line 43
-        if ((0 <= twig_compare((twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 43, $this->source); })()), "numero", [], "any", false, false, false, 43) - 1), twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 43, $this->source); })()), "min", [], "any", false, false, false, 43)))) {
-            // line 44
+               ";
+        // line 44
+        echo "                ";
+        if ((0 <= twig_compare((twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 44, $this->source); })()), "numero", [], "any", false, false, false, 44) - 1), twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 44, $this->source); })()), "min", [], "any", false, false, false, 44)))) {
+            // line 45
             echo "                    <a href=\"../../organigramme/user/";
-            echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 44, $this->source); })()), "numero", [], "any", false, false, false, 44) - 1), "html", null, true);
+            echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 45, $this->source); })()), "numero", [], "any", false, false, false, 45) - 1), "html", null, true);
             echo "\"><img width='50px' heigh='50px' src=\"../../../img/fleche_gauche.png\"></a>
                 ";
         }
-        // line 46
-        echo "                    &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/\"><img width='50px' heigh='50px' src=\"../../../img/home.png\"></a>
-                ";
         // line 47
-        if ((-1 === twig_compare((twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 47, $this->source); })()), "numero", [], "any", false, false, false, 47) + 1), twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 47, $this->source); })()), "max", [], "any", false, false, false, 47)))) {
-            // line 48
+        echo "                    &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/\"><img width='50px' heigh='50px' src=\"../../../img/organisation.webp\"></a>
+                ";
+        // line 48
+        if ((-1 === twig_compare((twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 48, $this->source); })()), "numero", [], "any", false, false, false, 48) + 1), twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 48, $this->source); })()), "max", [], "any", false, false, false, 48)))) {
+            // line 49
             echo "                    &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/user/";
-            echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 48, $this->source); })()), "numero", [], "any", false, false, false, 48) + 1), "html", null, true);
+            echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 49, $this->source); })()), "numero", [], "any", false, false, false, 49) + 1), "html", null, true);
             echo "\"><img width='50px' heigh='50px' src=\"../../../img/fleche_droite.png\"></a>
                 ";
         }
-        // line 50
+        // line 51
+        echo "                ";
+        // line 52
         echo "            </h2>
 \t\t<br>
         </p>
@@ -197,7 +200,7 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
 
     public function getDebugInfo()
     {
-        return array (  178 => 50,  172 => 48,  170 => 47,  167 => 46,  161 => 44,  159 => 43,  151 => 38,  145 => 35,  135 => 32,  125 => 31,  119 => 29,  113 => 27,  111 => 26,  98 => 24,  90 => 21,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
+        return array (  181 => 52,  179 => 51,  173 => 49,  171 => 48,  168 => 47,  162 => 45,  159 => 44,  152 => 39,  146 => 36,  136 => 33,  126 => 32,  120 => 30,  114 => 28,  112 => 27,  98 => 24,  90 => 21,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -226,6 +229,7 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
 \t\t<p>
             <h2>
                 <img width='100px' heigh='100px' src=\"../../../img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\"> &nbsp;&nbsp;{{user.firstname}} {{user.lastname}}
+                <a href=\"../../\" alt=\"retour\"> <img width='50px' heigh='50px' src=\"../../../img/home.png\" alt=\"image de mail\"></a>
             </h2>
             {% if user.supHierarchique != \"\" %}
             <h2>Supérieur Hierarchique : {{user.supHierarchique}}</h2>
@@ -243,14 +247,15 @@ class __TwigTemplate_8e9e9e5c751968ff3f1d17796d77bb174874f94f9aa5dd8d71e3bc7cea4
                 </h2>            
             
             <h2>
-               
+               {# {bloc pagination  en twig} #}
                 {% if user.numero - 1 >= pagination.min %}
                     <a href=\"../../organigramme/user/{{user.numero - 1}}\"><img width='50px' heigh='50px' src=\"../../../img/fleche_gauche.png\"></a>
                 {% endif %}
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/\"><img width='50px' heigh='50px' src=\"../../../img/home.png\"></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/\"><img width='50px' heigh='50px' src=\"../../../img/organisation.webp\"></a>
                 {% if user.numero + 1 < pagination.max %}
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href=\"../../organigramme/user/{{user.numero + 1}}\"><img width='50px' heigh='50px' src=\"../../../img/fleche_droite.png\"></a>
                 {% endif %}
+                {# {fin bloc pagination en twig} #}
             </h2>
 \t\t<br>
         </p>

@@ -22,6 +22,7 @@
 		<p>
             <h2>
                 <img width='100px' heigh='100px' src="../../../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}"> &nbsp;&nbsp;{{user.firstname}} {{user.lastname}}
+                <a href="../../" alt="retour"> <img width='50px' heigh='50px' src="../../../img/home.png" alt="image de mail"></a>
             </h2>
             {% if user.supHierarchique != "" %}
             <h2>Supérieur Hierarchique : {{user.supHierarchique}}</h2>
@@ -39,14 +40,15 @@
                 </h2>            
             
             <h2>
-               
+               {# {bloc pagination  en twig} #}
                 {% if user.numero - 1 >= pagination.min %}
                     <a href="../../organigramme/user/{{user.numero - 1}}"><img width='50px' heigh='50px' src="../../../img/fleche_gauche.png"></a>
                 {% endif %}
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="../../organigramme/"><img width='50px' heigh='50px' src="../../../img/home.png"></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="../../organigramme/"><img width='50px' heigh='50px' src="../../../img/organisation.webp"></a>
                 {% if user.numero + 1 < pagination.max %}
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href="../../organigramme/user/{{user.numero + 1}}"><img width='50px' heigh='50px' src="../../../img/fleche_droite.png"></a>
                 {% endif %}
+                {# {fin bloc pagination en twig} #}
             </h2>
 		<br>
         </p>
