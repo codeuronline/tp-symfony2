@@ -187,5 +187,11 @@ function* oneAndDone() {
     yield 1;
     return "done";
 }
-
+// reourne value qui n'apparait pas dane une iteration normal 
 [...oneAndDone()] // =>1
+// mais il est diponible si vous appelez explicitement next()
+let generator = oneAndDone();
+console.log(generator.next()); // => {value: 1, done:false}
+console.log(generator.next()); // => {value: "done", done:true}
+console.log(generator.next()); // si le generateur est déja a atteint la valeur done, 
+                               // la valeur n'est pas retourne encore
