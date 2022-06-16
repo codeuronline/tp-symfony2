@@ -31,10 +31,9 @@ class TeamController extends AbstractController
     
         public function getAllTeam(ManagerRegistry $doctrine,?int $id=null): array
     {
-        $users = $doctrine->getManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
+        $users = $doctrine->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
         $full = [];
         $numero = 0;
-        
         foreach ($users as $elementUser) {
             $afull = [];
 
