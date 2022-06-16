@@ -36,7 +36,6 @@ class TeamController extends AbstractController
         $numero = 0;
         foreach ($users as $elementUser) {
             $afull = [];
-
             $afull['numero'] = $numero;
             $afull['id'] = $elementUser->getId();
             $afull['firstname'] = $elementUser->getFirstname();
@@ -52,7 +51,6 @@ class TeamController extends AbstractController
             $afull['photo'] = $elementUser->getPhoto();
             $key = $afull['firstname'] . " " . $afull['lastname'];
 
-            
             foreach ($afull['position'] as $position) {
                 $positionLabel['label'] = $position->getLabel();
 
@@ -112,11 +110,9 @@ class TeamController extends AbstractController
                 $table[$user["key"]] = null;
             } else {
                 $table[$user["key"]] = $user["supHierarchique"];
-    
             }
-            
     }
-     var_dump($table);
+    // var_dump($table);
     // retourne la structure hierarchique
     return $table;
    }
@@ -229,8 +225,8 @@ class TeamController extends AbstractController
         $order = $this->recursive($doctrine,$full,$hierarchie);
     
                 
-        var_dump("hieararchie",$hierarchie);
-        var_dump('order',array_values($order));
+        //var_dump("hieararchie",$hierarchie);
+        //var_dump('order',array_values($order));
         return $this->render(
             'team/organigramme.html.twig',
             [
