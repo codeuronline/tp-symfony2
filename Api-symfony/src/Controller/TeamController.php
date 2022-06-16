@@ -107,7 +107,7 @@ class TeamController extends AbstractController
      */
 
     
-   public function construcHiearchic(ManagerRegistry $doctrine,$users){
+   public function construcHierarchie(ManagerRegistry $doctrine,$users){
     foreach ($users as $user) {
         if (empty($user["supHierarchique"])){
                 $table[$user["key"]] = null;
@@ -125,13 +125,13 @@ class TeamController extends AbstractController
    
     /**
      * @Route("/team/recursive", name="app_team_recursive") 
-     *  et methode pour trier $element selon la structure hiearchique $tableSupervisor
+     *  et methode pour trier $element selon la structure hieararchieque $tableSupervisor
      */
 
     public function recursive(ManagerRegistry $doctrine,$element,$tableSupervisor)
     {
 
-        // var_dump("element:", $element, "T => Hiearchie:", $tableSupervisor);
+        // var_dump("element:", $element, "T => hieararchiee:", $tableSupervisor);
         // genere un tabeau $level des profondeurs à partir des $element selon $tableSupervisor
         function profondeur($tableSupervisor,$element,$crw,&$level) {
 
@@ -224,14 +224,14 @@ class TeamController extends AbstractController
         // on recupere tous les membres de l'organisation
         $full = $this->getAllTeam($doctrine);
         // on recupère l'organistion hierarchique  
-        $hierarchie = $this->construcHiearchic($doctrine,$full);
+        $hierarchie = $this->construcHierarchie($doctrine,$full);
         
         // on tri selon l'organisation hierarchique
         $order = $this->recursive($doctrine,$full,$hierarchie);
     
                 
-        // var_dump("hiearchie",$hierarchie);
-        // var_dump('order',array_values($order));
+        var_dump("hieararchie",$hierarchie);
+        var_dump('order',array_values($order));
         return $this->render(
             'team/organigramme.html.twig',
             [
