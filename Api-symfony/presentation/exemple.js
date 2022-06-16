@@ -193,5 +193,6 @@ function* oneAndDone() {
 let generator = oneAndDone();
 console.log(generator.next()); // => {value: 1, done:false}
 console.log(generator.next()); // => {value: "done", done:true}
-console.log(generator.next()); // si le generateur est déja a atteint la valeur done, 
+console.log(generator.next()); // si le generateur est déja a atteint la valeur done,
                                // la valeur n'est pas retourne encore
+                               
