@@ -16,9 +16,7 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class TeamController extends AbstractController
 {
-    public function findassuperiorHierarchic()
-    {
-    }
+    
     /**
      * @Route("/team", name="app_team")
      * affiche la vue de index
