@@ -10,9 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
-
-
-
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class TeamController extends AbstractController
 {
@@ -31,11 +29,12 @@ class TeamController extends AbstractController
     // Renvoie un Tableau de la Team 
     // si $id est defini Renvoie un utilisateur particulier
     
-    public function getAllTeam(ManagerRegistry $doctrine,$id=null): array
+        public function getAllTeam(ManagerRegistry $doctrine,?int $id=null): array
     {
         $users = $doctrine->getManager()->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
         $full = [];
         $numero = 0;
+        
         foreach ($users as $elementUser) {
             $afull = [];
 
@@ -89,7 +88,7 @@ class TeamController extends AbstractController
     {
         $user=$this->getAllTeam($doctrine,$id);
 
-        var_dump(count($user));
+    var_dump(count($user));
         $pagination['max'] = count($user);
         $pagination['min'] = 0;
         $pagination['self'] = $user[$id]['id'];
