@@ -25,11 +25,12 @@
       
     <script type="text/javascript">
         (function (date) {
-            //date = new Date().toString();
+            if (date== null) date = new Date().toString();
               
             document.querySelector('.output').textContent
                         = date;
-        })(date= new Date().toString());
+                        document.alert()
+        })();
     </script>
 </body>
   
