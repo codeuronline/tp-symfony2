@@ -51,7 +51,6 @@ class TeamController extends AbstractController
                 $positionLabel['label'] = $position->getLabel();
 
                 if (count($afull['position']) > 1) {
-
                     if (!isset($afull['label'])) {
                         $afull['label'] = $positionLabel['label'];
                     } else {
@@ -60,7 +59,6 @@ class TeamController extends AbstractController
                 } else {
                     $afull['label'] = $position->getLabel();
                 }
-                
                 if (isset($id)){
                     $full[]=$afull;
                 }else{
@@ -69,7 +67,6 @@ class TeamController extends AbstractController
             }
             $numero++;
         }
-        
         return $full;
     }
 

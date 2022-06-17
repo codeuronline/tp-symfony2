@@ -1,0 +1,3 @@
+<?php //route_name_e020fd463f11521260b4ef03dda9393c
+
+return [PHP_INT_MAX, 'api_teams_get_item'];
