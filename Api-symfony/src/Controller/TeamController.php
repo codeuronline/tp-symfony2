@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
-use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+
 
 class TeamController extends AbstractController
 {
@@ -41,6 +41,7 @@ class TeamController extends AbstractController
             $afull['firstname'] = $elementUser->getFirstname();
             $afull['lastname'] = $elementUser->getLastname();
             $afull['key'] = $elementUser->getFirstname() . " " . $elementUser->getLastname();
+            var_dump("aFull['key']",$afull['key']);
             $afull['supHierarchique'] = $elementUser->getSupHierarchique();
             $afull['age'] = $elementUser->getAge();
             $afull['adresse'] = $elementUser->getAdresse();
@@ -50,7 +51,7 @@ class TeamController extends AbstractController
             $afull['position'] = $elementUser->getPositions();
             $afull['photo'] = $elementUser->getPhoto();
             $key = $afull['firstname'] . " " . $afull['lastname'];
-
+            var_dump("key",$key);
             foreach ($afull['position'] as $position) {
                 $positionLabel['label'] = $position->getLabel();
 

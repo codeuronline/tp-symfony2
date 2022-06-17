@@ -21,20 +21,35 @@
 		<h1><a href="../team"><img width='50px' heigh='50px' src="../../img/home.png" alt="image d'adresse"></a>Organigramme de l'équipe</h1>
 				<p>
 			{% for userOrder in order %}
+			{# boucle pour chaque utilisateur de la liste ordonné#}
 				{% for user in users %}
+				{# boucle pour chaque membre #}
 					{% if userOrder == user.key %}
+					{# si l'utilisateur ordonné = membre #}
 					{% set flag = true %}
+					{# mise a tree du flag  #}
 						{% for place in hierarchie %}
+						{# boucle pour chaquue position de hierarchie #}
 							{% set i = loop.index %}
-							{% if (user.supHierarchique == place) and (flag == true) %}
+							{# initailisation du compteur	 #}
+							{% if user.supHierarchique == place and flag == true %}
+								{# si user.superiarchique = place et que flag = true (n'est pas encore pas dans la condition)  #}
 								{% set flag = false %}
+								{# mise a false du flag #}
 								{% for j in 1.. i %}
+								{# boucle de j de 1 à i #}
 									&nbsp; &nbsp;
 								{% endfor %}
+								{# on affiche l'id du membre #}
 								{{user.id}}
+								{# on affcihe  la photo du membre #}
 								<img width='40px' heigh='40px' src="../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}">
-								<a href="organigramme/user/{{user.numero}}">{{user.firstname}}
+								<a href="organigramme/user/{{user.numero}}">
+								{# on affiche son prenom #}
+								{{user.firstname}}
+								{# on affiche son nom #}
 									{{user.lastname}}
+									{# on affiche son label #}
 									({{user.label}})</a>
 									<br>
 							{% endif %}
