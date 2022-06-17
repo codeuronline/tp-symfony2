@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-//use App\Repository\TeamRepository;
-//use App\Repository\PositionRepository;
-//use App\Entity\Position;
 use App\Entity\Team;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +26,7 @@ class TeamController extends AbstractController
     // Renvoie un Tableau de la Team 
     // si $id est defini Renvoie un utilisateur particulier
     
-        public function getAllTeam(ManagerRegistry $doctrine,?int $id=null): array
+    public function getAllTeam(ManagerRegistry $doctrine,?int $id=null): array
     {
         $users = $doctrine->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
         $full = [];
@@ -41,7 +38,6 @@ class TeamController extends AbstractController
             $afull['firstname'] = $elementUser->getFirstname();
             $afull['lastname'] = $elementUser->getLastname();
             $afull['key'] = $elementUser->getFirstname() . " " . $elementUser->getLastname();
-            var_dump("aFull['key']",$afull['key']);
             $afull['supHierarchique'] = $elementUser->getSupHierarchique();
             $afull['age'] = $elementUser->getAge();
             $afull['adresse'] = $elementUser->getAdresse();
@@ -51,7 +47,6 @@ class TeamController extends AbstractController
             $afull['position'] = $elementUser->getPositions();
             $afull['photo'] = $elementUser->getPhoto();
             $key = $afull['firstname'] . " " . $afull['lastname'];
-            var_dump("key",$key);
             foreach ($afull['position'] as $position) {
                 $positionLabel['label'] = $position->getLabel();
 
@@ -65,9 +60,10 @@ class TeamController extends AbstractController
                 } else {
                     $afull['label'] = $position->getLabel();
                 }
+                
                 if (isset($id)){
-                    $full[]=$afull;}
-                else{
+                    $full[]=$afull;
+                }else{
                     $full[$key] = $afull;
                 }
             }
@@ -86,7 +82,7 @@ class TeamController extends AbstractController
     {
         $user=$this->getAllTeam($doctrine,$id);
 
-    var_dump(count($user));
+    // var_dump(count($user));
         $pagination['max'] = count($user);
         $pagination['min'] = 0;
         $pagination['self'] = $user[$id]['id'];
