@@ -187,18 +187,22 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
                             // line 53
                             echo "\t\t\t\t\t\t\t\t";
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 53), "html", null, true);
-                            echo "
+                            echo " 
 \t\t\t\t\t\t\t\t";
                             // line 55
-                            echo "\t\t\t\t\t\t\t\t\t";
+                            echo "\t\t\t\t\t\t\t\t";
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 55), "html", null, true);
                             echo "
-\t\t\t\t\t\t\t\t\t";
+\t\t\t\t\t\t\t\t";
                             // line 57
-                            echo "\t\t\t\t\t\t\t\t\t(";
+                            echo "\t\t\t\t\t\t\t\t(";
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "label", [], "any", false, false, false, 57), "html", null, true);
+                            echo ") (NIVEAU DE LA HIERARCHIE H)";
+                            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "niveau", [], "any", false, false, false, 57), "html", null, true);
+                            echo "--(POSITION DANS LA HIERARCHIE)";
+                            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "level", [], "any", false, false, false, 57), "html", null, true);
                             echo ")</a>
-\t\t\t\t\t\t\t\t\t<br>
+\t\t\t\t\t\t\t\t<br>
 \t\t\t\t\t\t\t";
                         }
                         // line 60
@@ -231,9 +235,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['userOrder'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 64
-        echo "
-\t\t</p>
-
+        echo "\t\t</p>
 \t</div>
 ";
         
@@ -253,7 +255,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 
     public function getDebugInfo()
     {
-        return array (  234 => 64,  228 => 63,  222 => 62,  219 => 61,  205 => 60,  198 => 57,  193 => 55,  188 => 53,  184 => 51,  175 => 50,  170 => 48,  168 => 47,  161 => 45,  159 => 44,  154 => 43,  152 => 42,  149 => 41,  147 => 40,  144 => 39,  142 => 38,  139 => 37,  137 => 36,  119 => 35,  117 => 34,  114 => 33,  112 => 32,  109 => 31,  107 => 30,  102 => 29,  100 => 28,  96 => 27,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
+        return array (  238 => 64,  232 => 63,  226 => 62,  223 => 61,  209 => 60,  198 => 57,  193 => 55,  188 => 53,  184 => 51,  175 => 50,  170 => 48,  168 => 47,  161 => 45,  159 => 44,  154 => 43,  152 => 42,  149 => 41,  147 => 40,  144 => 39,  142 => 38,  139 => 37,  137 => 36,  119 => 35,  117 => 34,  114 => 33,  112 => 32,  109 => 31,  107 => 30,  102 => 29,  100 => 28,  96 => 27,  74 => 7,  67 => 6,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -297,7 +299,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t\t\t\t\t\t\t{% set i = loop.index %}
 \t\t\t\t\t\t\t{# initailisation du compteur\t #}
 \t\t\t\t\t\t\t{% if user.supHierarchique == place and flag == true %}
-\t\t\t\t\t\t\t\t{# si user.superiarchique = place et que flag = true (n'est pas encore pas dans la condition)  #}
+\t\t\t\t\t\t\t\t{# si user.superiarchique = place et que flag = true (n'est pas encore passé dans la condition)  #}
 \t\t\t\t\t\t\t\t{% set flag = false %}
 \t\t\t\t\t\t\t\t{# mise a false du flag #}
 \t\t\t\t\t\t\t\t{% for j in 1.. i %}
@@ -306,24 +308,22 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t\t\t\t\t\t\t\t{% endfor %}
 \t\t\t\t\t\t\t\t{# on affiche l'id du membre #}
 \t\t\t\t\t\t\t\t{{user.id}}
-\t\t\t\t\t\t\t\t{# on affcihe  la photo du membre #}
+\t\t\t\t\t\t\t\t{# on affiche  la photo du membre #}
 \t\t\t\t\t\t\t\t<img width='40px' heigh='40px' src=\"../img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\">
 \t\t\t\t\t\t\t\t<a href=\"organigramme/user/{{user.numero}}\">
 \t\t\t\t\t\t\t\t{# on affiche son prenom #}
-\t\t\t\t\t\t\t\t{{user.firstname}}
+\t\t\t\t\t\t\t\t{{user.firstname}} 
 \t\t\t\t\t\t\t\t{# on affiche son nom #}
-\t\t\t\t\t\t\t\t\t{{user.lastname}}
-\t\t\t\t\t\t\t\t\t{# on affiche son label #}
-\t\t\t\t\t\t\t\t\t({{user.label}})</a>
-\t\t\t\t\t\t\t\t\t<br>
+\t\t\t\t\t\t\t\t{{user.lastname}}
+\t\t\t\t\t\t\t\t{# on affiche son label #}
+\t\t\t\t\t\t\t\t({{user.label}}) (NIVEAU DE LA HIERARCHIE H){{user.niveau}}--(POSITION DANS LA HIERARCHIE){{user.level}})</a>
+\t\t\t\t\t\t\t\t<br>
 \t\t\t\t\t\t\t{% endif %}
 \t\t\t\t\t\t{% endfor %}
 \t\t\t\t\t{% endif %}
 \t\t\t\t{% endfor %}
 \t\t\t{% endfor %}
-
 \t\t</p>
-
 \t</div>
 {% endblock %}
 ", "team/organigramme.html.twig", "C:\\laragon\\www\\tp-symfony2\\Api-symfony\\templates\\team\\organigramme.html.twig");

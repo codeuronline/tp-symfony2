@@ -12,6 +12,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'id',
                     'firstname',
                     'lastname',
+                    'level',
                     'positions',
                     'supHierarchique',
                     'Photo',

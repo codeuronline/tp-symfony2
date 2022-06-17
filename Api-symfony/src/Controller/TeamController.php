@@ -39,6 +39,7 @@ class TeamController extends AbstractController
             $afull['lastname'] = $elementUser->getLastname();
             $afull['key'] = $elementUser->getFirstname() . " " . $elementUser->getLastname();
             $afull['supHierarchique'] = $elementUser->getSupHierarchique();
+            $afull['level'] = $elementUser->getLevel();
             $afull['age'] = $elementUser->getAge();
             $afull['adresse'] = $elementUser->getAdresse();
             $afull['mail'] = $elementUser->getmail();
@@ -49,7 +50,6 @@ class TeamController extends AbstractController
             $key = $afull['firstname'] . " " . $afull['lastname'];
             foreach ($afull['position'] as $position) {
                 $positionLabel['label'] = $position->getLabel();
-
                 if (count($afull['position']) > 1) {
                     if (!isset($afull['label'])) {
                         $afull['label'] = $positionLabel['label'];
@@ -58,6 +58,7 @@ class TeamController extends AbstractController
                     }
                 } else {
                     $afull['label'] = $position->getLabel();
+                    $afull['niveau']=$position->getNiveau();
                 }
                 if (isset($id)){
                     $full[]=$afull;

@@ -1,3 +1,0 @@
-<?php //route_name_31dc68527b4924f6e52a4c8b566159b2
-
-return [PHP_INT_MAX, 'api_teams_get_collection'];

@@ -30,7 +30,10 @@ class Team
      * @ORM\Column(type="string", length=255)
      */
     private $lastname;
-
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $level;
     /**
      * @ORM\ManyToMany(targetEntity=Position::class, mappedBy="users")
      */
@@ -80,7 +83,10 @@ class Team
     {
         return $this->id;
     }
-
+    public function getLevel(): ?string
+    {
+        return $this->level;
+    }
     public function getFirstname(): ?string
     {
         return $this->firstname;
@@ -90,6 +96,11 @@ class Team
     {
         $this->firstname = $firstname;
 
+        return $this;
+    }
+    public function setLevel(string $level): self
+    {
+        $this->level = $level;
         return $this;
     }
 

@@ -37,7 +37,7 @@
 							{% set i = loop.index %}
 							{# initailisation du compteur	 #}
 							{% if user.supHierarchique == place and flag == true %}
-								{# si user.superiarchique = place et que flag = true (n'est pas encore pas dans la condition)  #}
+								{# si user.superiarchique = place et que flag = true (n'est pas encore passé dans la condition)  #}
 								{% set flag = false %}
 								{# mise a false du flag #}
 								{% for j in 1.. i %}
@@ -46,23 +46,21 @@
 								{% endfor %}
 								{# on affiche l'id du membre #}
 								{{user.id}}
-								{# on affcihe  la photo du membre #}
+								{# on affiche  la photo du membre #}
 								<img width='40px' heigh='40px' src="../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}">
 								<a href="organigramme/user/{{user.numero}}">
 								{# on affiche son prenom #}
-								{{user.firstname}}
+								{{user.firstname}} 
 								{# on affiche son nom #}
-									{{user.lastname}}
-									{# on affiche son label #}
-									({{user.label}})</a>
-									<br>
+								{{user.lastname}}
+								{# on affiche son label #}
+								({{user.label}}) (NIVEAU DE LA HIERARCHIE H){{user.niveau}}--(POSITION DANS LA HIERARCHIE){{user.level}})</a>
+								<br>
 							{% endif %}
 						{% endfor %}
 					{% endif %}
 				{% endfor %}
 			{% endfor %}
-
 		</p>
-
 	</div>
 {% endblock %}

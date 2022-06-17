@@ -27,9 +27,15 @@ class Position
     private $label;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $niveau;
+    /**
      * @ORM\ManyToMany(targetEntity=Team::class, inversedBy="positions")
      */
     private $users;
+    
+
 
     public function __construct()
     {
@@ -46,11 +52,9 @@ class Position
         return $this->label;
     }
 
-    public function setLabel(string $label): self
+    public function getNiveau()
     {
-        $this->label = $label;
-
-        return $this;
+        return $this->niveau;
     }
 
     /**
@@ -73,6 +77,20 @@ class Position
     public function removeUser(Team $user): self
     {
         $this->users->removeElement($user);
+
+        return $this;
+    }
+
+    public function setLevel(string $level): self
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    public function setNiveau($niveau): self
+    {
+        $this->niveau = $niveau;
 
         return $this;
     }
