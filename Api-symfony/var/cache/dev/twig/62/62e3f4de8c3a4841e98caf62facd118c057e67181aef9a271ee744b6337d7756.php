@@ -197,9 +197,9 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
                             // line 57
                             echo "\t\t\t\t\t\t\t\t(";
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "label", [], "any", false, false, false, 57), "html", null, true);
-                            echo ") (NIVEAU DE LA HIERARCHIE H)";
+                            echo ") (NIV. :";
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "niveau", [], "any", false, false, false, 57), "html", null, true);
-                            echo "--(POSITION DANS LA HIERARCHIE)";
+                            echo ")--(POS. :";
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "level", [], "any", false, false, false, 57), "html", null, true);
                             echo ")</a>
 \t\t\t\t\t\t\t\t<br>
@@ -316,7 +316,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t\t\t\t\t\t\t\t{# on affiche son nom #}
 \t\t\t\t\t\t\t\t{{user.lastname}}
 \t\t\t\t\t\t\t\t{# on affiche son label #}
-\t\t\t\t\t\t\t\t({{user.label}}) (NIVEAU DE LA HIERARCHIE H){{user.niveau}}--(POSITION DANS LA HIERARCHIE){{user.level}})</a>
+\t\t\t\t\t\t\t\t({{user.label}}) (NIV. :{{user.niveau}})--(POS. :{{user.level}})</a>
 \t\t\t\t\t\t\t\t<br>
 \t\t\t\t\t\t\t{% endif %}
 \t\t\t\t\t\t{% endfor %}
