@@ -33,7 +33,7 @@ class TeamController extends AbstractController
     {
         $users = $doctrine->getRepository(Team::class)->findAll(); //Récupérer une collection d'objets
         $full = [];
-        $numero = 0;
+        $numero = 0; // contient le numero dans 'l utilsateur dans l'ordre d insertion
         foreach ($users as $elementUser) {
             $afull = [];
             $afull['numero'] = $numero;
