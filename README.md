@@ -1,4 +1,4 @@
-# diapi symfony
+# api symfony
 
 # gestion des entity(s)
 
