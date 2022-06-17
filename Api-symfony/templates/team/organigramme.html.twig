@@ -18,14 +18,14 @@
 	</style>
 	<div class="example-wrapper">
 		<h1>
-			<a href="../team">
-				<img width='50px' heigh='50px' src="../../img/home.png" alt="image d'adresse">
+			<a href="/team">
+				<img width='50px' heigh='50px' src="/img/home.png" alt="image d'adresse">
 			</a>
 			Organigramme de l'équipe
 		</h1>
 			<p>
 			{% for userOrder in order %}
-			{# boucle pour chaque utilisateur de la liste ordonné#}
+			{# boucle pour chaque utilisateur de la liste ordonnée#}
 				{% for user in users %}
 				{# boucle pour chaque membre #}
 					{% if userOrder == user.key %}
@@ -47,7 +47,7 @@
 								{# on affiche l'id du membre #}
 								{{user.id}}
 								{# on affiche  la photo du membre #}
-								<img width='40px' heigh='40px' src="../img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}">
+								<img width='40px' heigh='40px' src="/img/{{ user.photo }}" alt="photo de {{user.firstname}} {{user.lastname}}">
 								<a href="organigramme/user/{{user.numero}}">
 								{# on affiche son prenom #}
 								{{user.firstname}} 

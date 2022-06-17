@@ -85,8 +85,8 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t</style>
 \t<div class=\"example-wrapper\">
 \t\t<h1>
-\t\t\t<a href=\"../team\">
-\t\t\t\t<img width='50px' heigh='50px' src=\"../../img/home.png\" alt=\"image d'adresse\">
+\t\t\t<a href=\"/team\">
+\t\t\t\t<img width='50px' heigh='50px' src=\"/img/home.png\" alt=\"image d'adresse\">
 \t\t\t</a>
 \t\t\tOrganigramme de l'équipe
 \t\t</h1>
@@ -172,7 +172,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
                             echo "
 \t\t\t\t\t\t\t\t";
                             // line 50
-                            echo "\t\t\t\t\t\t\t\t<img width='40px' heigh='40px' src=\"../img/";
+                            echo "\t\t\t\t\t\t\t\t<img width='40px' heigh='40px' src=\"/img/";
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "photo", [], "any", false, false, false, 50), "html", null, true);
                             echo "\" alt=\"photo de ";
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 50), "html", null, true);
@@ -199,7 +199,7 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "label", [], "any", false, false, false, 57), "html", null, true);
                             echo ") (NIV. :";
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "niveau", [], "any", false, false, false, 57), "html", null, true);
-                            echo ")--(POS. :";
+                            echo ") -- (POS. :";
                             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "level", [], "any", false, false, false, 57), "html", null, true);
                             echo ")</a>
 \t\t\t\t\t\t\t\t<br>
@@ -280,14 +280,14 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t</style>
 \t<div class=\"example-wrapper\">
 \t\t<h1>
-\t\t\t<a href=\"../team\">
-\t\t\t\t<img width='50px' heigh='50px' src=\"../../img/home.png\" alt=\"image d'adresse\">
+\t\t\t<a href=\"/team\">
+\t\t\t\t<img width='50px' heigh='50px' src=\"/img/home.png\" alt=\"image d'adresse\">
 \t\t\t</a>
 \t\t\tOrganigramme de l'équipe
 \t\t</h1>
 \t\t\t<p>
 \t\t\t{% for userOrder in order %}
-\t\t\t{# boucle pour chaque utilisateur de la liste ordonné#}
+\t\t\t{# boucle pour chaque utilisateur de la liste ordonnée#}
 \t\t\t\t{% for user in users %}
 \t\t\t\t{# boucle pour chaque membre #}
 \t\t\t\t\t{% if userOrder == user.key %}
@@ -309,14 +309,14 @@ class __TwigTemplate_c62f1a1965f83f08257dd7f6e7f58df6ebf4ce50f02bd7aeaf5bd7c1825
 \t\t\t\t\t\t\t\t{# on affiche l'id du membre #}
 \t\t\t\t\t\t\t\t{{user.id}}
 \t\t\t\t\t\t\t\t{# on affiche  la photo du membre #}
-\t\t\t\t\t\t\t\t<img width='40px' heigh='40px' src=\"../img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\">
+\t\t\t\t\t\t\t\t<img width='40px' heigh='40px' src=\"/img/{{ user.photo }}\" alt=\"photo de {{user.firstname}} {{user.lastname}}\">
 \t\t\t\t\t\t\t\t<a href=\"organigramme/user/{{user.numero}}\">
 \t\t\t\t\t\t\t\t{# on affiche son prenom #}
 \t\t\t\t\t\t\t\t{{user.firstname}} 
 \t\t\t\t\t\t\t\t{# on affiche son nom #}
 \t\t\t\t\t\t\t\t{{user.lastname}}
 \t\t\t\t\t\t\t\t{# on affiche son label #}
-\t\t\t\t\t\t\t\t({{user.label}}) (NIV. :{{user.niveau}})--(POS. :{{user.level}})</a>
+\t\t\t\t\t\t\t\t({{user.label}}) (NIV. :{{user.niveau}}) -- (POS. :{{user.level}})</a>
 \t\t\t\t\t\t\t\t<br>
 \t\t\t\t\t\t\t{% endif %}
 \t\t\t\t\t\t{% endfor %}
